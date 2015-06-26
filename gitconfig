@@ -1,0 +1,29 @@
+[user]
+  name = Kimihiko NAKAMURA
+  email = nakamura@r-n-i.jp
+[core]
+  excludesfile = ~/.gitignore
+[branch]
+	autosetuprebase = always
+[color]
+	ui = auto
+[push]
+	default = simple
+[alias]
+	st = status
+	co = checkout
+	su = submodule update --init
+	cp = cherry-pick
+	m = merge
+	rb = rebase
+	br = branch
+	f = fetch
+	ci = commit
+	s = submodule
+	rbo = rebase origin/master
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[fetch]
+	prune = true
