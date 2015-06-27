@@ -1,2 +1,5 @@
-bind '^p' ed-search-prev-history
-bind '^n' ed-search-next-history
+bind -e                          # emacs mode
+bind '\t' rl_complete            # enable tab completion
+bind '^r' em-inc-search-prev     # enable incremental backward search
+bind '^p' ed-search-prev-history # incremental search
+bind '^n' ed-search-next-history # incremental search
