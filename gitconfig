@@ -27,5 +27,7 @@
 	required = true
 [fetch]
 	prune = true
+[ghq]
+	root = ~/src
 [credential]
 	helper = osxkeychain

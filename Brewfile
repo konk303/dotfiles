@@ -2,6 +2,7 @@ tap 'homebrew/bundle'
 tap 'homebrew/versions'
 tap 'homebrew/dupes'
 tap 'railwaycat/emacsmacport'
+tap 'motemen/ghq'
 
 brew 'git'
 brew 'zsh'
@@ -12,6 +13,8 @@ brew 'cask', args: ['ignore-dependencies']
 
 brew 'direnv'
 brew 'wget'
+brew 'ghq'
+brew 'peco'
 
 brew 'readline'
 brew 'rbenv'

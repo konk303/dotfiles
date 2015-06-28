@@ -12,6 +12,7 @@ alias r=rails
 alias g='noglob git'
 alias e='emacsclient'
 alias pr='pry-remote'
+alias cdd='cd $(ghq list -p | peco)'
 
 # move to current working project by default
 alias wd='cd ~/dev/mycomment-rails'
