@@ -24,6 +24,9 @@ eval "$(direnv hook zsh)"
 # zmv
 autoload zmv -U
 
+# zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # copied from old zshrc
 #window title
 # set terminal title including current directory
