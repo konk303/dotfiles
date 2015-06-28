@@ -1,6 +1,7 @@
 (require 'cask "/usr/local/share/emacs/site-lisp/cask.el")
 (cask-initialize)
 
+(pallet-mode t)
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
