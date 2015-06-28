@@ -6,6 +6,7 @@
 (setq default-input-method "MacOSX")
 (mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
 
+(add-to-list 'default-frame-alist '(font . "ricty-diminished-13.5"))
 
 ;;backup file location ~/bakに
 (setq make-backup-files t)
@@ -333,27 +334,6 @@
                               (if font-lock-mode
                                   nil
                                 (font-lock-mode t))))
-
-;; (add-to-list 'default-frame-alist '(font . "ricty-13.5"))
-;; italic japanese fonts hack
-;; http://gongo.hatenablog.com/entry/2011/12/08/232953
-;; 日本語コメント
-(when (x-list-fonts "Ricty")
-  (let* ((size 13)
-         (asciifont "Ricty")
-         (jpfont "Ricty")
-         (h (* size 11))
-         (fontspec)
-         (jp-fontspec))
-    (set-face-attribute 'default nil :family asciifont :height h)
-    (setq fontspec (font-spec :family asciifont))
-    (setq jp-fontspec (font-spec :family jpfont))
-    (set-fontset-font nil 'japanese-jisx0208 jp-fontspec)
-    (set-fontset-font nil 'japanese-jisx0212 jp-fontspec)
-    (set-fontset-font nil 'japanese-jisx0213-1 jp-fontspec)
-    (set-fontset-font nil 'japanese-jisx0213-2 jp-fontspec)
-    (set-fontset-font nil '(#x0080 . #x024F) fontspec)
-    (set-fontset-font nil '(#x0370 . #x03FF) fontspec)))
 
 ;; 自動改行の調整
 (setq truncate-partial-width-windows nil)
