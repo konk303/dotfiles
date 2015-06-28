@@ -1,13 +1,11 @@
-;; ;; load path
-;; (setq load-path
-;;       (append
-;;        (list
-;;         (expand-file-name "~/.emacs.d/elisp")
-;;         )
-;;        load-path))
-
 (require 'cask "/usr/local/share/emacs/site-lisp/cask.el")
 (cask-initialize)
+
+
+;; messing with ime
+(setq default-input-method "MacOSX")
+(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
+
 
 ;;backup file location ~/bakに
 (setq make-backup-files t)
