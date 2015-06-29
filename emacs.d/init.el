@@ -32,7 +32,7 @@
 (if window-system
     (progn
       (add-to-list 'default-frame-alist '(alpha . 85))
-      (setq initial-frame-alist '((width . 150)(height . 45)(top . 50)(left . 50)))
+      (setq initial-frame-alist '((width . 160)(height . 55)(top . 50)(left . 50)))
       (load-theme 'wombat t)
       (cond
        ;; carbon emacs

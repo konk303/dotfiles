@@ -12,8 +12,10 @@ alias mysqlu='mysql -uroot'
 alias r=rails
 alias g='noglob git'
 alias e='emacsclient'
+alias ee='open /Applications/Emacs.app'
 alias pr='pry-remote'
 alias cdd='cd $(ghq list -p | peco)'
+alias gitx='gitx --all'
 
 # move to current working project by default
 alias wd='cd ~/dev/mycomment-rails'
