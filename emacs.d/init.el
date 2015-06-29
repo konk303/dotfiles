@@ -1,13 +1,12 @@
 (require 'cask "/usr/local/share/emacs/site-lisp/cask.el")
 (cask-initialize)
-
 (pallet-mode t)
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
 (mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
 
-(add-to-list 'default-frame-alist '(font . "ricty-diminished-13.5"))
+(add-to-list 'default-frame-alist '(font . "Ricty Diminished-15"))
 
 ;;backup file location ~/bakに
 (setq make-backup-files t)
@@ -32,8 +31,8 @@
 ;;emacs version/system oriented
 (if window-system
     (progn
-      (add-to-list 'default-frame-alist '(alpha . (85 85)))
-      (setq initial-frame-alist '((width . 180)(height . 65)(top . 30)(left . 50)))
+      (add-to-list 'default-frame-alist '(alpha . 85))
+      (setq initial-frame-alist '((width . 150)(height . 45)(top . 50)(left . 50)))
       (load-theme 'wombat t)
       (cond
        ;; carbon emacs

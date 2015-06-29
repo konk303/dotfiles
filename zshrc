@@ -1,9 +1,9 @@
 # envs
 export EDITOR=emacsclient
 export VISUAL=emacsclient
+export CLICOLOR=1
 
 # aliases
-alias ls='ls -G'
 alias ll='ls -lah'
 alias cp='cp -v'
 alias mv='mv -v'
