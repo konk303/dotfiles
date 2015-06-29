@@ -1,15 +1,21 @@
 (source gnu)
 (source melpa)
 
+(depends-on "auto-complete")
 (depends-on "bind-key")
 (depends-on "cask")
 (depends-on "dash")
 (depends-on "drag-stuff")
+(depends-on "edit-server")
+(depends-on "elixir-mode")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")
+(depends-on "feature-mode")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
+(depends-on "golden-ratio")
+(depends-on "helm")
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "magit")
@@ -22,20 +28,9 @@
 (depends-on "s")
 (depends-on "smartparens")
 (depends-on "smex")
+(depends-on "solarized-theme")
 (depends-on "use-package")
 (depends-on "web-mode")
-(depends-on "yasnippet")
-
-;; https://github.com/roman/golden-ratio.el
-(depends-on "golden-ratio")
-;; https://github.com/rdallasgray/pallet
-(depends-on "pallet")
-
-(depends-on "helm")
-(depends-on "auto-complete")
-(depends-on "edit-server")
-
-;; modes
-(depends-on "feature-mode")
 (depends-on "yaml-mode")
-(depends-on "elixir-mode")
+(depends-on "yasnippet")
+(depends-on "zenburn-theme")
