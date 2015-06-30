@@ -15,6 +15,7 @@ brew 'direnv'
 brew 'wget'
 brew 'ghq'
 brew 'peco'
+brew 'markdown'
 
 brew 'readline'
 brew 'rbenv'
