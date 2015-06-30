@@ -34,8 +34,9 @@
       (add-to-list 'default-frame-alist '(alpha . 85))
       (setq initial-frame-alist '((width . 160)(height . 55)(top . 50)(left . 50)))
       ;; (load-theme 'solarized-dark t)
-      ;; (load-theme 'zenburn t)
-      (load-theme 'wombat t)
+      (load-theme 'zenburn t)
+      (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
+      ;; (load-theme 'wombat t)
       (cond
        ;; carbon emacs
        ((featurep 'carbon-emacs-package)
