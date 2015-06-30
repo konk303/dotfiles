@@ -53,7 +53,6 @@
       ))
 ;;tabs, indent
 (setq standard-indent 2)
-(setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 ;; ruby
 (require 'ruby-mode)
@@ -72,8 +71,6 @@
 ;; C-h に割り当てられている関数 help-command を C-x C-h に割り当てる
 (define-key global-map "\C-x\C-h" 'help-command)
 
-;; 括弧の対応をハイライト.
-(show-paren-mode 1)
 ;; リージョンを色付きにする
 (setq-default transient-mark-mode 1)
 ;; 時間を表示
@@ -82,8 +79,6 @@
 (column-number-mode 1)
 ; startup message disable
 (setq inhibit-startup-message t)
-;; メニューバーを消す
-(menu-bar-mode -1)
 ;; BS で選択範囲を消す
 (delete-selection-mode 1)
 ;; バッファの最後で next-line しても新しい行を挿入しない
@@ -117,9 +112,6 @@
 ;; (require 'auto-install)
 ;; (setq auto-install-directory "~/.emacs.d/auto-install/")
 
-;;http://blog.clouder.jp/archives/000673.html
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq scroll-step 1)
 (setq read-file-name-completion-ignore-case nil)
 
