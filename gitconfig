@@ -16,9 +16,9 @@
 	cp = cherry-pick
 	m = merge
 	rb = rebase
-	br = branch
+	br = branch -vv
 	f = fetch
-	ci = commit
+	ci = commit -v
 	s = submodule
 	rbo = rebase origin/master
 [filter "hawser"]
