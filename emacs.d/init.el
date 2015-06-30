@@ -8,12 +8,6 @@
 
 (add-to-list 'default-frame-alist '(font . "Ricty Diminished-15"))
 
-;;backup file location ~/bakに
-(setq make-backup-files t)
-(setq backup-directory-alist
-      (cons (cons "\\.*$" (expand-file-name "~/bak"))
-            backup-directory-alist))
-
 ;; starting to mess with 23
 (setq line-move-visual 'nil)
 (setq ns-pop-up-frames nil)
