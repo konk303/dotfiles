@@ -35,3 +35,5 @@ brew 'node'
 brew 'python'
 brew 'ghc'
 brew 'scala'
+
+cask 'flash'
