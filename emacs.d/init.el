@@ -236,7 +236,7 @@
 
 ;;javascript-mode to json
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
-
+(setq js-indent-level 2)
 
 ;;ruby-mode
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
