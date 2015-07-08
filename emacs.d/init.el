@@ -213,6 +213,8 @@
 ;; feature
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
 
+;; css
+(setq css-indent-offset 2)
 ;; scss
 (add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 (defun my-scss-mode-hook ()
