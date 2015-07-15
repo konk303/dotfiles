@@ -52,7 +52,7 @@ cask 'dropbox'
 cask 'evernote'
 cask 'slack'
 
-cask 'gitx'
+cask 'rowanj-gitx'
 cask 'dash'
 cask 'atom'
 cask 'java'
