@@ -21,6 +21,7 @@
 	ci = commit -v
 	s = submodule
 	rbo = rebase origin/master
+  dm = diff master...
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
