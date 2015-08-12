@@ -65,3 +65,5 @@ cask 'vagrant-manager'
 cask 'radiant-player'
 cask 'spotify'
 cask 'keepassx0'
+
+cask 'butter' # idobata client
