@@ -61,6 +61,7 @@ cask 'mysqlworkbench'
 cask 'virtualbox'
 cask 'vagrant'
 cask 'vagrant-manager'
+cask 'cord' # windows remote desktop
 
 cask 'radiant-player'
 cask 'spotify'
