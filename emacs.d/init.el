@@ -293,6 +293,10 @@
 ;; (setq rails-use-mongrel t)
 ;; (require 'rails)
 
+;; geiser, for scheme(racket).
+(setq geiser-racket-binary "/usr/local/bin/racket")
+(setq geiser-active-implementations '(racket))
+
 ;; chrome edit with emacs
 ;; http://www.emacswiki.org/emacs/Edit_with_Emacs
 (require 'edit-server)

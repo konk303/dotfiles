@@ -1,6 +1,7 @@
 (source gnu)
 (source melpa)
 
+(depends-on "ac-geiser")
 (depends-on "auto-complete")
 (depends-on "better-defaults")
 (depends-on "bind-key")
@@ -15,6 +16,7 @@
 (depends-on "feature-mode")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
+(depends-on "geiser")
 (depends-on "golden-ratio")
 (depends-on "helm")
 (depends-on "htmlize")
