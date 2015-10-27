@@ -1,4 +1,4 @@
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(require 'cask)
 (cask-initialize)
 (pallet-mode t)
 
