@@ -2,6 +2,10 @@
 (cask-initialize)
 (pallet-mode t)
 
+;; programming modes settings
+;; rainbow delimiters
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 ;; messing with ime
 (setq default-input-method "MacOSX")
 (mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
