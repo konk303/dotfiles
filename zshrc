@@ -3,6 +3,9 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 export CLICOLOR=1
 
+# path
+path=($HOME/bin(N-/) $path)
+
 # aliases
 alias ll='ls -lah'
 alias cp='cp -v'
@@ -21,6 +24,7 @@ alias gitx='gitx --all'
 alias wd='cd ~/dev/mycomment-rails'
 alias sand='cd ~/dev/mycomment-rails_sandbox'
 wd
+
 
 # direnv
 eval "$(direnv hook zsh)"
