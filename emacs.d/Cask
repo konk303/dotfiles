@@ -6,6 +6,7 @@
 (depends-on "better-defaults")
 (depends-on "bind-key")
 (depends-on "cask")
+(depends-on "csv-mode")
 (depends-on "dash")
 (depends-on "drag-stuff")
 (depends-on "edit-server")
