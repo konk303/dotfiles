@@ -57,6 +57,12 @@
 ;; flycheck
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+;; M-n, M-p to `next/prev error`
+(global-set-key (kbd "M-n") 'next-error)
+(global-set-key (kbd "M-p") 'previous-error)
+
 
 ;; php :p
 ;;(require 'php-mode)
