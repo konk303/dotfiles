@@ -46,17 +46,17 @@
        ((eq window-system 'ns)
         (setq mac-command-modifier 'meta)
         (setq mac-allow-anti-aliasing t)
+        (exec-path-from-shell-initialize)
         ;; (load "emacs23mac_font.el")
         ))
       ))
 ;;tabs, indent
 (setq standard-indent 2)
 (setq-default tab-width 2)
-;; ruby
-(require 'ruby-mode)
-(setq ruby-deep-indent-paren-style nil)
-;; magickコメントを入れない
-(defun ruby-mode-set-encoding () ())
+
+;; flycheck
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; php :p
 ;;(require 'php-mode)
@@ -245,10 +245,8 @@
 (setq js-indent-level 2)
 
 ;;ruby-mode
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rash$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-
+;; indent style
+;; (setq ruby-deep-indent-paren-style nil)
 
 ;; rspec-mode
 ;; (require 'rspec-mode)
@@ -267,10 +265,6 @@
 (add-hook 'ruby-mode-hook '(lambda ()
                              (local-set-key (kbd "RET") 'newline-and-indent)
                              ))
-
-;; flycheck
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
-(add-hook 'ruby-mode-hook 'flycheck-mode)
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
