@@ -55,10 +55,10 @@
 (setq-default tab-width 2)
 
 ;; flycheck
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode))
+;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
+(eval-after-load "flycheck"
+  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 ;; M-n, M-p to `next/prev error`
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
@@ -251,6 +251,8 @@
 (setq js-indent-level 2)
 
 ;;ruby-mode
+;; magickコメントを入れない
+(defun ruby-mode-set-encoding () ())
 ;; indent style
 ;; (setq ruby-deep-indent-paren-style nil)
 
