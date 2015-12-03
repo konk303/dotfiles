@@ -106,16 +106,6 @@
 ;; 行番号
 (global-linum-mode t)
 
-;; extensions
-;; package
-;; (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; (package-initialize)
-;; auto-install
-;; (require 'auto-install)
-;; (setq auto-install-directory "~/.emacs.d/auto-install/")
-
 (setq scroll-step 1)
 (setq read-file-name-completion-ignore-case nil)
 
@@ -253,51 +243,20 @@
 ;;ruby-mode
 ;; magickコメントを入れない
 (setq ruby-encoding-magic-comment-style nil)
-;; indent style
-;; (setq ruby-deep-indent-paren-style nil)
-
-;; rspec-mode
-;; (require 'rspec-mode)
-
-;; Rinari
-;; (add-to-list 'load-path "~/Dropbox/dotfiles/elisp/rinari")
-;; (require 'rinari)
-;;; rhtml-mode
-;; (add-to-list 'load-path "~/Dropbox/dotfiles/elisp/rhtml")
-;; (require 'rhtml-mode)
-;; (add-hook 'rhtml-mode-hook
-;;           (lambda () (rinari-launch)))
-;; flymake for ruby
-;; (load "flymakeruby")
-;; auto indent
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (local-set-key (kbd "RET") 'newline-and-indent)
-                             ))
+;; `C-c C-s` to r c instead of pry
+(eval-after-load 'inf-ruby
+  '(define-key inf-ruby-minor-mode-map
+     (kbd "C-c C-s") 'inf-ruby-console-auto))
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;;(add-hook 'ruby-mode-hook '(lambda () (add-hook 'write-contents-hooks '(lambda () (indent-region (point-min) (point-max))))))
-;; ruby-electric.el --- electric editing commands for ruby files
-;; (require 'ruby-electric)
-;; (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
 ;;haml-mode
 (require 'haml-mode nil 't)
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 ;;sass-mode
 (require 'sass-mode nil 't)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
-
-;;rails
-;; (defun try-complete-abbrev (old)
-;;   (if (expand-abbrev) t nil))
-
-;; (setq hippie-expand-try-functions-list
-;;       '(try-complete-abbrev
-;;         try-complete-file-name
-;;         try-expand-dabbrev))
-;; (setq rails-use-mongrel t)
-;; (require 'rails)
 
 ;; geiser, for scheme(racket).
 (setq geiser-racket-binary "/usr/local/bin/racket")
