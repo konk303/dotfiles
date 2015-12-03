@@ -252,7 +252,7 @@
 
 ;;ruby-mode
 ;; magickコメントを入れない
-(defun ruby-mode-set-encoding () ())
+(setq ruby-encoding-magic-comment-style nil)
 ;; indent style
 ;; (setq ruby-deep-indent-paren-style nil)
 
