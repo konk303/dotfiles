@@ -247,6 +247,7 @@
 (eval-after-load 'inf-ruby
   '(define-key inf-ruby-minor-mode-map
      (kbd "C-c C-s") 'inf-ruby-console-auto))
+(add-hook 'ruby-mode-hook 'yard-mode)
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
