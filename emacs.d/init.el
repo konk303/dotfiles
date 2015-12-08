@@ -298,3 +298,21 @@
 
 ;; 自動改行の調整
 (setq truncate-partial-width-windows nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+
+ ;; Ignore prefiexes and use binstub version
+ '(rspec-spec-command "bin/rspec")
+ '(rspec-use-bundler-when-possible nil)
+ '(rspec-use-rake-when-possible nil)
+ '(rspec-use-spring-when-possible nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
