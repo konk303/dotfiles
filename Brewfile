@@ -46,6 +46,7 @@ cask 'clipmenu'
 
 cask 'google-chrome'
 cask 'flash'
+cask 'vlc'
 cask 'google-drive'
 cask 'firefox'
 cask 'skype'
