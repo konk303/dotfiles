@@ -18,6 +18,7 @@ brew 'tree'
 brew 'ghq'
 brew 'peco'
 brew 'markdown'
+brew 'tmux'
 
 brew 'readline'
 brew 'rbenv'
