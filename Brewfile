@@ -32,7 +32,6 @@ brew 'ghostscript'
 brew 'ffmpeg'
 brew 'homebrew/versions/phantomjs198'
 
-
 brew 'elixir'
 brew 'node'
 brew 'python'
