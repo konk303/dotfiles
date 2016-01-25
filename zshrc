@@ -13,7 +13,7 @@ alias mv='mv -v'
 alias rm='rm -v'
 alias mysqlu='mysql -uroot'
 alias r=rails
-alias g='noglob git'
+alias g='git'
 alias e='emacsclient'
 alias ee='open /Applications/Emacs.app'
 alias pr='pry-remote'
@@ -21,8 +21,9 @@ alias cdd='cd $(ghq list -p | peco)'
 alias gitx='gitx --all'
 
 # move to current working project by default
-alias wd='cd ~/dev/mycomment-rails'
-alias sand='cd ~/dev/mycomment-rails_sandbox'
+alias wd='cd ~/dev/mycomment'
+alias kd='cd ~/dev/kizuki'
+alias sand='cd ~/dev/mycomment-sandbox'
 wd
 
 
@@ -34,6 +35,12 @@ autoload zmv -U
 
 # zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+# use extended glob (#, ~, ^), without aborting
+setopt extended_glob
+setopt no_nomatch
+
+
 
 # copied from old zshrc
 #window title
@@ -124,9 +131,6 @@ setopt correct
 
 # =command を command のパス名に展開する
 setopt equals
-
-# ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
-setopt extended_glob
 
 # zsh の開始・終了時刻をヒストリファイルに書き込む
 #setopt extended_history
