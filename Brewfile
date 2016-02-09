@@ -24,13 +24,13 @@ brew 'readline'
 brew 'rbenv'
 brew 'ruby-build'
 
-brew 'mysql'
+brew 'homebrew/versions/mysql56'
 brew 'redis'
 
 brew 'imagemagick'
 brew 'ghostscript'
 brew 'ffmpeg'
-brew 'homebrew/versions/phantomjs198'
+brew 'phantomjs'
 
 brew 'elixir'
 brew 'node'
