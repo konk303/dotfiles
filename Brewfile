@@ -37,6 +37,7 @@ brew 'node'
 brew 'python'
 brew 'ghc'
 brew 'scala'
+brew 'nginx'
 cask 'racket'
 
 cask 'google-japanese-ime'
