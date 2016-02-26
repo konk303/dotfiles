@@ -29,6 +29,7 @@
 (depends-on "markdown-mode")
 (depends-on "markdown-toc")
 (depends-on "multiple-cursors")
+(depends-on "nginx-mode")
 (depends-on "nyan-mode")
 (depends-on "pallet")
 (depends-on "popwin")
