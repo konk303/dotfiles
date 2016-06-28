@@ -24,7 +24,7 @@ brew 'readline'
 brew 'rbenv'
 brew 'ruby-build'
 
-brew 'homebrew/versions/mysql56'
+brew 'homebrew/versions/mysql56', args: ['use-llvm']
 brew 'redis'
 
 brew 'imagemagick'

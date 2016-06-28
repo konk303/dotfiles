@@ -21,7 +21,6 @@
 (depends-on "flycheck-color-mode-line")
 (depends-on "geiser")
 (depends-on "golden-ratio")
-(depends-on "helm")
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "inf-ruby")

@@ -46,6 +46,7 @@
        ((eq window-system 'ns)
         (setq mac-command-modifier 'meta)
         (setq mac-allow-anti-aliasing t)
+        (setq exec-path-from-shell-check-startup-files nil)
         (exec-path-from-shell-initialize)
         ;; (load "emacs23mac_font.el")
         ))
@@ -140,12 +141,12 @@
 (global-set-key (kbd "M-c") 'kill-ring-save)
 
 ;; anything -> helm
-(require 'helm-config)
+;; (require 'helm-config)
 ;; (add-to-list 'load-path "~/Dropbox/dotfiles/elisp/anything-config/")
 ;;(require 'anything-startup)
 ;; (require 'anything-config)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(setq recentf-max-saved-items 500)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (setq recentf-max-saved-items 500)
 
 ;; yasnippet
 ;; (add-to-list 'load-path "~/Dropbox/dotfiles/elisp/yasnippet/")
@@ -207,6 +208,10 @@
 
 
 ;; modes
+
+;; jsx
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+
 ;; erb
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
 
