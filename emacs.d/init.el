@@ -59,7 +59,10 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 ;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
 (eval-after-load "flycheck"
-  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+  '(progn
+     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+     ;; use eslint with web-mode for jsx files
+     (flycheck-add-mode 'javascript-eslint 'web-mode)))
 ;; M-n, M-p to `next/prev error`
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
@@ -209,8 +212,13 @@
 
 ;; modes
 
-;; jsx
+;; js/jsx
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+              '(javascript-jshint))
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
 
 ;; erb
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
