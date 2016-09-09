@@ -31,6 +31,7 @@ brew 'imagemagick'
 brew 'ghostscript'
 brew 'ffmpeg'
 brew 'phantomjs'
+brew 'p7zip'
 
 brew 'elixir'
 brew 'node'
