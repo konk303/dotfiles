@@ -26,6 +26,7 @@ brew 'ruby-build'
 
 brew 'homebrew/versions/mysql56', args: ['use-llvm']
 brew 'redis'
+brew 'memcached'
 
 brew 'imagemagick'
 brew 'ghostscript'
