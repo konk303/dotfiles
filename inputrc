@@ -16,7 +16,7 @@ $endif
 set show-all-if-ambiguous on
 
 # ディレクトリに印を付ける
-set visible-status on
+set visible-stats on
 
 # Tabサイクル補完
 Tab:menu-complete
