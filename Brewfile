@@ -41,6 +41,7 @@ brew 'ghc'
 brew 'scala'
 brew 'nginx'
 cask 'racket'
+brew 'go'
 
 cask 'google-japanese-ime'
 cask 'karabiner'

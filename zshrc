@@ -3,6 +3,7 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 export CLICOLOR=1
 
+export GOPATH=~/dev
 # path
 path=($HOME/bin(N-/) $path)
 
