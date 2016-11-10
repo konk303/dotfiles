@@ -42,6 +42,9 @@ brew 'scala'
 brew 'nginx'
 cask 'racket'
 brew 'go'
+# electron building
+cask 'xquartz'
+brew 'wine'
 
 cask 'google-japanese-ime'
 cask 'karabiner'
