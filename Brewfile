@@ -36,6 +36,7 @@ brew 'p7zip'
 
 brew 'elixir'
 brew 'node'
+brew 'yarn'
 brew 'python'
 brew 'ghc'
 brew 'scala'
