@@ -62,7 +62,9 @@
   '(progn
      (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
      ;; use eslint with web-mode for jsx files
-     (flycheck-add-mode 'javascript-eslint 'web-mode)))
+     (flycheck-add-mode 'javascript-eslint 'web-mode)
+     (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
+     ))
 ;; M-n, M-p to `next/prev error`
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
@@ -212,8 +214,13 @@
 
 ;; modes
 
+;; html
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
 ;; js/jsx
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-hook 'js2-jsx-mode-hook (lambda () (setq js2-basic-offset 2)))
+;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               '(javascript-jshint))
