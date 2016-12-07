@@ -6,7 +6,7 @@ export CLICOLOR=1
 export GOPATH=~/dev
 
 # path
-path=($HOME/.yarn-config/global/node_modules/.bin $HOME/bin(N-/) $path)
+path=(`yarn global bin` $HOME/bin(N-/) $path)
 
 # aliases
 alias ll='ls -lah'
