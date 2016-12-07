@@ -219,11 +219,13 @@
 
 ;; js/jsx
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-hook 'js2-jsx-mode-hook (lambda () (setq js2-basic-offset 2)))
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               '(javascript-jshint))
+
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
 
