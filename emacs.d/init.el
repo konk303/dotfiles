@@ -228,7 +228,6 @@
 ;; js/jsx
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
-(add-hook 'js2-jsx-mode-hook (lambda () (setq js2-basic-offset 2)))
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
@@ -328,15 +327,24 @@
 
 ;; 自動改行の調整
 (setq truncate-partial-width-windows nil)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(js-switch-indent-offset 2)
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t)
+ '(js2-indent-switch-body t)
+ '(js2-mode-indent-ignore-first-tab t)
+ '(js2-strict-missing-semi-warning nil)
+ '(js2-strict-trailing-comma-warning nil)
  '(rspec-spec-command "bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
- '(rspec-use-spring-when-possible nil))
+ '(rspec-use-spring-when-possible nil)
+ '(web-mode-attr-indent-offset 1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
