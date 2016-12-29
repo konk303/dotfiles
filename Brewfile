@@ -42,10 +42,11 @@ brew 'node'
 brew 'yarn'
 brew 'python'
 brew 'ghc'
+cask 'java'
 brew 'scala'
-brew 'nginx'
 cask 'racket'
 brew 'go'
+brew 'nginx'
 # electron building
 cask 'xquartz'
 brew 'wine'
@@ -56,19 +57,18 @@ cask 'bettertouchtool'
 cask 'clipmenu'
 
 cask 'google-chrome'
-cask 'flash'
-cask 'vlc'
 cask 'google-drive'
 cask 'firefox'
-cask 'skype'
 cask 'dropbox'
 cask 'evernote'
 cask 'slack'
+cask 'vlc'
+cask 'skype'
+cask 'cord' # windows remote desktop
 
 cask 'rowanj-gitx'
 cask 'dash'
 cask 'atom'
-cask 'java'
 cask 'mysqlworkbench'
 
 cask 'virtualbox'
@@ -78,6 +78,5 @@ cask 'cord' # windows remote desktop
 
 cask 'radiant-player'
 cask 'spotify'
-cask 'keepassx0'
 
 cask 'butter' # idobata client
