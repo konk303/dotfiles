@@ -44,7 +44,7 @@ brew 'python'
 brew 'ghc'
 cask 'java'
 brew 'scala'
-cask 'racket'
+# cask 'racket'
 brew 'go'
 brew 'nginx'
 # electron building
