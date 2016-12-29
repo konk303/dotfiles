@@ -1,16 +1,19 @@
 tap 'homebrew/bundle'
 tap 'homebrew/versions'
 tap 'homebrew/dupes'
-tap 'caskroom/homebrew-versions'
-tap 'railwaycat/emacsmacport'
+tap 'homebrew/services'
+tap 'caskroom/cask'
+tap 'caskroom/versions'
 tap 'motemen/ghq'
+tap 'konk303/emacs-inline-patched'
+# tap-pin 'konk303/emacs-inline-patched'
 
 brew 'git'
 brew 'zsh'
 brew 'zsh-completions'
-# brew 'emacs-mac'
-brew 'https://gist.githubusercontent.com/ksato9700/0b3c71adafc256ddf280/raw/f48ac50bf8d1a16aa63606b137cd29b8fb1d7414/emacs.rb', args: ['japanese', 'cocoa']
-brew 'cask', args: ['ignore-dependencies']
+# emacs from custom formula
+brew 'emacs', args: ['with-cocoa']
+brew 'cask'
 
 brew 'direnv'
 brew 'wget'
