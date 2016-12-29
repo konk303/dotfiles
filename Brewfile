@@ -55,8 +55,9 @@ cask 'google-japanese-ime'
 cask 'karabiner'
 cask 'bettertouchtool'
 cask 'clipmenu'
-
+cask 'docker'
 cask 'google-chrome'
+
 cask 'google-drive'
 cask 'firefox'
 cask 'dropbox'
@@ -70,11 +71,6 @@ cask 'rowanj-gitx'
 cask 'dash'
 cask 'atom'
 cask 'mysqlworkbench'
-
-cask 'virtualbox'
-cask 'vagrant'
-cask 'vagrant-manager'
-cask 'cord' # windows remote desktop
 
 cask 'radiant-player'
 cask 'spotify'
