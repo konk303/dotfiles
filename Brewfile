@@ -27,7 +27,7 @@ brew 'readline'
 brew 'rbenv'
 brew 'ruby-build'
 
-brew 'homebrew/versions/mysql56', args: ['use-llvm']
+brew 'mysql@5.6'
 brew 'redis'
 brew 'memcached'
 
