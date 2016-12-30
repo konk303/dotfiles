@@ -1,1 +1,1 @@
-eval "$(rbenv init -)"
+# nothing atm

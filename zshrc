@@ -8,6 +8,9 @@ export GOPATH=~/dev
 # path
 path=(`yarn global bin` $HOME/bin(N-/) $path)
 
+# rbenv
+eval "$(rbenv init -)"
+
 # aliases
 alias ll='ls -lah'
 alias cp='cp -v'
