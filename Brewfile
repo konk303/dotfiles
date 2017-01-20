@@ -31,7 +31,7 @@ brew 'mysql@5.6'
 brew 'redis'
 brew 'memcached'
 
-brew 'imagemagick'
+brew 'imagemagick@6'
 brew 'ghostscript'
 brew 'ffmpeg'
 brew 'phantomjs'
