@@ -26,7 +26,9 @@ alias cdd='cd $(ghq list -p | peco)'
 alias gitx='gitx --all'
 
 # move to current working project by default
-alias wd='cd ~/dev/mycomment'
+alias wd='cd ~/dev/rni'
+alias m='cd ~/dev/rni/mycomment'
+alias c='cd ~/dev/rni/code'
 alias kd='cd ~/dev/kizuki'
 alias sand='cd ~/dev/mycomment-sandbox'
 wd
