@@ -71,6 +71,7 @@ cask 'rowanj-gitx'
 cask 'dash'
 cask 'atom'
 cask 'mysqlworkbench'
+cask 'android-studio'
 
 cask 'radiant-player'
 cask 'spotify'
