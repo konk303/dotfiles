@@ -228,7 +228,7 @@
 ;; js/jsx
 ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
 (setq web-mode-content-types-alist
   '(("jsx" . "\\.js[x]?\\'")))
 ;; disable jshint since we prefer eslint checking
@@ -346,7 +346,7 @@
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
  '(rspec-use-spring-when-possible nil)
- '(web-mode-attr-indent-offset 1))
+ '(web-mode-attr-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
