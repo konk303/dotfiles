@@ -36,8 +36,8 @@
 ;;emacs version/system oriented
 (if window-system
     (progn
-      (add-to-list 'default-frame-alist '(alpha . 85))
-      (setq initial-frame-alist '((width . 160)(height . 55)(top . 50)(left . 50)))
+      (add-to-list 'default-frame-alist '(alpha . 80))
+      (setq initial-frame-alist '((width . 170)(height . 55)(top . 50)(left . 50)))
       ;; (load-theme 'solarized-dark t)
       (load-theme 'zenburn t)
       (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
@@ -229,8 +229,12 @@
 ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-(setq web-mode-content-types-alist
-  '(("jsx" . "\\.js[x]?\\'")))
+(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
+            (add-to-list 'web-mode-comment-formats '("javascript" . "//" ))
+            ))
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               '(javascript-jshint))
