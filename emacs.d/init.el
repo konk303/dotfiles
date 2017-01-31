@@ -230,11 +230,11 @@
 ;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
 (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
-(add-hook 'web-mode-hook
-          (lambda ()
-            (add-to-list 'web-mode-comment-formats '("jsx" . "//" ))
-            (add-to-list 'web-mode-comment-formats '("javascript" . "//" ))
-            ))
+(setq-default web-mode-comment-formats
+              '(("java"       . "/*")
+                ("javascript" . "//")
+                ("jsx" . "//")
+                ("php"        . "/*")))
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               '(javascript-jshint))
