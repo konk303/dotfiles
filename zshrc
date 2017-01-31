@@ -3,7 +3,9 @@ export EDITOR=emacsclient
 export VISUAL=emacsclient
 export CLICOLOR=1
 
+# go
 export GOPATH=~/dev
+path=($GOPATH/bin $path)
 
 # path
 path=(`yarn global bin` $HOME/bin(N-/) $path)
@@ -29,6 +31,7 @@ alias gitx='gitx --all'
 alias wd='cd ~/dev/rni'
 alias m='cd ~/dev/rni/mycomment'
 alias c='cd ~/dev/rni/code'
+alias s='cd ~/dev/rni/stat'
 alias kd='cd ~/dev/kizuki'
 alias sand='cd ~/dev/mycomment-sandbox'
 wd
