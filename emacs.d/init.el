@@ -63,6 +63,18 @@
 (setq standard-indent 2)
 (setq-default tab-width 2)
 
+;; ido
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+;; (setq ido-use-faces nil)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 ;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
@@ -77,6 +89,9 @@
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
 
+;; projectile
+(projectile-global-mode)
+(projectile-rails-global-mode)
 
 ;; php :p
 ;;(require 'php-mode)
@@ -282,7 +297,12 @@
 (eval-after-load 'inf-ruby
   '(define-key inf-ruby-minor-mode-map
      (kbd "C-c C-s") 'inf-ruby-console-auto))
-(add-hook 'ruby-mode-hook 'yard-mode)
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (yard-mode)
+             ;; (robe-mode)
+             ))
+;; (add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -346,6 +366,9 @@
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-strict-missing-semi-warning nil)
  '(js2-strict-trailing-comma-warning nil)
+ '(package-selected-packages
+   (quote
+    (flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package typescript-mode solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults ac-inf-ruby ac-geiser)))
  '(rspec-spec-command "bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
