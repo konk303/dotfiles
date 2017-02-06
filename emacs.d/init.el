@@ -368,7 +368,7 @@
  '(js2-strict-trailing-comma-warning nil)
  '(package-selected-packages
    (quote
-    (flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package typescript-mode solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults ac-inf-ruby ac-geiser)))
+    (coffee-mode flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults ac-inf-ruby ac-geiser)))
  '(rspec-spec-command "bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
