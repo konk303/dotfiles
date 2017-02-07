@@ -68,6 +68,9 @@
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
 (flx-ido-mode 1)
+(ido-yes-or-no-mode 1)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 ;; disable ido faces to see flx highlights.
 ;; (setq ido-use-faces nil)
 (global-set-key (kbd "M-x") 'smex)
@@ -368,7 +371,7 @@
  '(js2-strict-trailing-comma-warning nil)
  '(package-selected-packages
    (quote
-    (coffee-mode flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults ac-inf-ruby ac-geiser)))
+    (coffee-mode ido-vertical-mode ido-yes-or-no flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults ac-inf-ruby ac-geiser)))
  '(rspec-spec-command "bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
