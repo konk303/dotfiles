@@ -30,6 +30,7 @@ brew 'ruby-build'
 brew 'mysql@5.6'
 brew 'redis'
 brew 'memcached'
+brew 'mongodb'
 
 brew 'imagemagick@6'
 brew 'ghostscript'
