@@ -37,7 +37,7 @@
 (if window-system
     (progn
       (add-to-list 'default-frame-alist '(alpha . 80))
-      (setq initial-frame-alist '((width . 170)(height . 55)(top . 50)(left . 50)))
+      (setq initial-frame-alist '((width . 185)(height . 55)(top . 50)(left . 50)))
       ;; (load-theme 'solarized-dark t)
       (load-theme 'zenburn t)
       (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
