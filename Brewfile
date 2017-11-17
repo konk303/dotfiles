@@ -58,6 +58,7 @@ cask 'bettertouchtool'
 cask 'clipmenu'
 cask 'docker'
 cask 'google-chrome'
+cask 'cyberduck'
 
 cask 'google-drive'
 cask 'firefox'
