@@ -22,6 +22,7 @@ brew 'ghq'
 brew 'peco'
 brew 'markdown'
 brew 'tmux'
+brew 's3cmd'
 
 brew 'readline'
 brew 'rbenv'
