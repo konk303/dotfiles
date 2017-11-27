@@ -24,6 +24,7 @@ brew 'markdown'
 brew 'tmux'
 brew 'awscli'
 brew 's3cmd'
+brew 'terraform'
 
 brew 'readline'
 brew 'rbenv'
