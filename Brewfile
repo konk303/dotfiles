@@ -63,6 +63,7 @@ cask 'clipmenu'
 cask 'docker'
 cask 'google-chrome'
 cask 'cyberduck'
+cask 'xmind'
 
 cask 'google-drive'
 cask 'firefox'
