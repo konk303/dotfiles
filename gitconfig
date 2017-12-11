@@ -1,6 +1,6 @@
 [user]
-  name = Kimihiko NAKAMURA
-  email = nakamura.808@gmail.com
+	name = Kimihiko NAKAMURA
+	email = nakamura.808@gmail.com
 [core]
   excludesfile = ~/.gitignore
 [branch]
@@ -38,3 +38,8 @@
 	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
