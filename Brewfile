@@ -65,6 +65,7 @@ cask 'docker'
 cask 'google-chrome'
 cask 'cyberduck'
 cask 'xmind'
+cask 'keepassx'
 
 cask 'google-drive'
 cask 'firefox'
