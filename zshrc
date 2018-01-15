@@ -9,7 +9,8 @@ path=($GOPATH/bin $path)
 
 # path
 path=(`yarn global bin` $HOME/bin(N-/) $path)
-
+# pip
+path=($HOME/Library/Python/2.7/bin $path)
 # rbenv
 eval "$(rbenv init -)"
 
@@ -26,6 +27,7 @@ alias ee='open /Applications/Emacs.app'
 alias pr='pry-remote'
 alias cdd='cd $(ghq list -p | peco)'
 alias gitx='gitx --all'
+alias doc='docker-compose'
 
 # move to current working project by default
 alias wd='cd ~/dev/rni'
