@@ -4,16 +4,18 @@ tap 'homebrew/dupes'
 tap 'homebrew/services'
 tap 'caskroom/cask'
 tap 'caskroom/versions'
-tap 'motemen/ghq'
+tap 'caskroom/fonts'
 tap 'konk303/emacs-inline-patched'
 # tap-pin 'konk303/emacs-inline-patched'
-
 brew 'git'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'zsh-git-prompt'
 # emacs from custom formula
 brew 'emacs', args: ['with-cocoa']
 brew 'cask'
+cask 'font-ricty-diminished'
+cask 'font-noto-sans-cjk-jp'
 
 brew 'direnv'
 brew 'wget'
@@ -32,16 +34,16 @@ brew 'readline'
 brew 'rbenv'
 brew 'ruby-build'
 
-brew 'mysql@5.6'
-brew 'redis'
-brew 'memcached'
-brew 'mongodb'
+# brew 'mysql@5.6'
+# brew 'redis'
+# brew 'memcached'
+# brew 'mongodb'
 
-brew 'imagemagick@6'
-brew 'ghostscript'
-brew 'ffmpeg'
-brew 'phantomjs'
-brew 'p7zip'
+# brew 'imagemagick@6'
+# brew 'ghostscript'
+# brew 'ffmpeg'
+# brew 'phantomjs'
+# brew 'p7zip'
 
 brew 'elixir'
 brew 'node'
@@ -54,8 +56,8 @@ cask 'racket'
 brew 'go'
 brew 'nginx'
 # electron building
-cask 'xquartz'
-brew 'wine'
+# cask 'xquartz'
+# brew 'wine'
 
 cask 'google-japanese-ime'
 cask 'karabiner'
@@ -74,7 +76,8 @@ cask 'evernote'
 cask 'slack'
 cask 'vlc'
 cask 'skype'
-cask 'cord' # windows remote desktop
+cask 'kindle'
+# cask 'cord' # windows remote desktop
 
 cask 'rowanj-gitx'
 cask 'dash'
@@ -85,4 +88,4 @@ cask 'android-studio'
 cask 'radiant-player'
 cask 'spotify'
 
-cask 'butter' # idobata client
+# cask 'butter' # idobata client
