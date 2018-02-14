@@ -102,6 +102,12 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
+;; org-mode (disable key bindings)
+(eval-after-load "org"
+  '(progn
+     (define-key org-mode-map (kbd "C-'") nil)
+     ))
+
 ;; C-h でカーソルの左にある文字を消す
 (define-key global-map "\C-h" 'delete-backward-char)
 ;; C-h に割り当てられている関数 help-command を C-x C-h に割り当てる
