@@ -4,7 +4,7 @@ export VISUAL=emacsclient
 export CLICOLOR=1
 
 # go
-export GOPATH=~/dev
+export GOPATH=~/src
 path=($GOPATH/bin $path)
 
 # path
