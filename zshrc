@@ -35,6 +35,8 @@ alias m='cd ~/dev/rni/mycomment'
 alias c='cd ~/dev/rni/code'
 alias s='cd ~/dev/rni/stat'
 alias kd='cd ~/dev/kizuki'
+alias a='cd ~/dev/rni/ansible'
+alias t='cd ~/dev/rni/terraform'
 alias sand='cd ~/dev/mycomment-sandbox'
 wd
 
