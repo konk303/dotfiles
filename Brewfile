@@ -29,6 +29,7 @@ brew 's3cmd'
 brew 'terraform'
 cask 'google-cloud-sdk'
 brew 'ansible'
+brew 'kubectl'
 
 brew 'readline'
 brew 'rbenv'
