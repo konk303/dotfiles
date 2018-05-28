@@ -27,6 +27,7 @@ brew 'tmux'
 brew 'awscli'
 brew 's3cmd'
 brew 'terraform'
+cask 'google-cloud-sdk'
 brew 'ansible'
 
 brew 'readline'
