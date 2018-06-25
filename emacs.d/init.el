@@ -9,6 +9,8 @@
 (cask-initialize)
 (pallet-mode t)
 
+(require 'better-defaults)
+
 ;; programming modes settings
 ;; rainbow delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
