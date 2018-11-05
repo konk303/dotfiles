@@ -29,6 +29,8 @@ brew 's3cmd'
 brew 'terraform'
 cask 'google-cloud-sdk'
 brew 'ansible'
+brew 'q' # http://harelba.github.io/q/index.html
+brew 'mdbtools' # https://stackoverflow.com/questions/5722544/how-can-i-convert-an-mdb-access-file-to-mysql-or-plain-sql-file
 
 brew 'readline'
 brew 'rbenv'
@@ -78,6 +80,7 @@ cask 'vlc'
 cask 'skype'
 cask 'kindle'
 # cask 'cord' # windows remote desktop
+cask 'skype-for-business'
 
 cask 'rowanj-gitx'
 cask 'dash'
