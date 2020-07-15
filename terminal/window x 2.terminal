@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>WindowList</key>
+	<array>
+		<dict>
+			<key>Origin</key>
+			<string>{576, -29}</string>
+			<key>ScrollerStyle</key>
+			<integer>1</integer>
+			<key>ShowsTabBar</key>
+			<false/>
+			<key>ShowsTabBarInFullScreen</key>
+			<false/>
+			<key>Window Settings</key>
+			<array>
+				<dict>
+					<key>Tab Column Count</key>
+					<integer>150</integer>
+					<key>Tab Row Count</key>
+					<integer>50</integer>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>25926DC1-9A8E-41B6-8FE8-F424755D803B</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Solarized font, D</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Solarized font, D</string>
+					<key>TabSelected</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>Tab Column Count</key>
+					<integer>150</integer>
+					<key>Tab Row Count</key>
+					<integer>50</integer>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>558611D5-09C6-48B9-A3F8-4008315D07FC</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Solarized font, D</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Solarized font, D</string>
+					<key>TabSelected</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>Tab Column Count</key>
+					<integer>150</integer>
+					<key>Tab Row Count</key>
+					<integer>50</integer>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>29EE4AF7-7DC7-4394-B331-321CA737040A</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Solarized font, D</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Solarized font, D</string>
+					<key>TabSelected</key>
+					<false/>
+				</dict>
+			</array>
+			<key>WindowNumber</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Origin</key>
+			<string>{1450, 948}</string>
+			<key>ScrollerStyle</key>
+			<integer>1</integer>
+			<key>ShowsTabBar</key>
+			<false/>
+			<key>ShowsTabBarInFullScreen</key>
+			<false/>
+			<key>Window Settings</key>
+			<array>
+				<dict>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>FF18F0BF-2743-4206-8FBA-CA2AB729D6D4</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Zenburn font</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Zenburn font</string>
+					<key>TabSelected</key>
+					<true/>
+				</dict>
+				<dict>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>243F1FE2-FD33-4E29-BE7E-C4A16C62A8D0</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Zenburn font</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Zenburn font</string>
+					<key>TabSelected</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>53A18BAF-E1A5-443E-B67F-27291262E3C7</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Zenburn font</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Zenburn font</string>
+					<key>TabSelected</key>
+					<false/>
+				</dict>
+				<dict>
+					<key>Tab Scrollback Restorable</key>
+					<true/>
+					<key>Tab Session Class ID</key>
+					<string>08B92B7F-1592-4034-A77B-B22BCC3FC51C</string>
+					<key>Tab Settings</key>
+					<dict>
+						<key>ProfileCurrentVersion</key>
+						<real>2.0499999999999998</real>
+						<key>name</key>
+						<string>Zenburn font</string>
+						<key>type</key>
+						<string>Window Settings</string>
+					</dict>
+					<key>Tab Settings Name</key>
+					<string>Zenburn font</string>
+					<key>TabSelected</key>
+					<false/>
+				</dict>
+			</array>
+			<key>WindowNumber</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>name</key>
+	<string>window x 2</string>
+	<key>type</key>
+	<string>Window Group</string>
+</dict>
+</plist>
