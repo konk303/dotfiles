@@ -97,7 +97,7 @@ esac
 # based on http://hatena.g.hatena.ne.jp/hatenatech/20060517
 ## 補完機能の強化
 autoload -U compinit
-compinit
+compinit -u
 
 ## 履歴の保存先
 HISTFILE=$HOME/.zsh-history
