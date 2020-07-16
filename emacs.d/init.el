@@ -5,7 +5,7 @@
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
 
-(require 'cask)
+(require 'cask "/usr/local/Cellar/cask/0.8.4/cask.el")
 (cask-initialize)
 (pallet-mode t)
 
