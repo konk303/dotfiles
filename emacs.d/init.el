@@ -202,15 +202,25 @@
 ;; (yas/initialize)
 ;; (yas/load-directory "~/Dropbox/dotfiles/elisp/yasnippet/snippets")
 
-;; auto-complete
-(require 'auto-complete-config)
-(ac-config-default)
-;; (add-to-list 'ac-dictionary-directories "~/Dropbox/dotfiles/elisp/ac-dict")
-(define-key ac-complete-mode-map (kbd "C-n") 'ac-next)
-(define-key ac-complete-mode-map (kbd "C-p") 'ac-previous)
-(define-key ac-complete-mode-map (kbd "C-g") 'ac-stop)
-(define-key ac-complete-mode-map "\t" 'ac-complete)
-(define-key ac-complete-mode-map "\n" 'ac-complete)
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (setq company-auto-expand t) ;; 1個目を自動的に補完
+  (setq company-transformers '(company-sort-by-backend-importance)) ;; ソート順
+  (setq company-idle-delay 0) ; 遅延なしにすぐ表示
+  (setq company-minimum-prefix-length 2) ; デフォルトは4
+  (setq company-selection-wrap-around t) ; 候補の最後の次は先頭に戻る
+  (setq completion-ignore-case t)
+  (setq company-dabbrev-downcase nil)
+  (global-set-key (kbd "C-M-i") 'company-complete)
+  ;; C-n, C-pで補完候補を次/前の候補を選択
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous)
+  (define-key company-active-map [tab] 'company-complete-selection) ;; TABで候補を設定
+  (define-key company-active-map (kbd "C-g") 'company-abort)
+  ;; (define-key company-active-map (kbd "C-h") nil) ;; C-hはバックスペース割当のため無効化
+  ;; (define-key company-active-map (kbd "C-S-h") 'company-show-doc-buffer) ;; ドキュメント表示はC-Shift-h
+  )
 
 ;; (defun my-anything ()
 ;;   (interactive)
