@@ -86,9 +86,6 @@
 (eval-after-load "flycheck"
   '(progn
      (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-     ;; use eslint with web-mode for jsx files
-     (flycheck-add-mode 'javascript-eslint 'web-mode)
-     (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
      ))
 ;; M-n, M-p to `next/prev error`
 (global-set-key (kbd "M-n") 'next-error)
@@ -262,10 +259,43 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 
 ;; js/jsx
-;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
-;; (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
-(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-(setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
+;; https://github.com/ananthakumaran/tide/
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  ;; configure javascript-tide checker to run after your default javascript checker
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
+  ;; configure jsx-tide checker to run after your default jsx checker
+  (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; enable typescript-tslint checker
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
+
+;; tsx
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+;; js/jsx
+(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . rjsx-mode))
+(add-hook 'rjsx-mode-hook #'setup-tide-mode)
+
 (setq-default web-mode-comment-formats
               '(("java"       . "/*")
                 ("javascript" . "//")
@@ -382,14 +412,14 @@
  ;; If there is more than one, they won't work right.
  '(js-switch-indent-offset 2)
  '(js2-basic-offset 2)
- '(js2-bounce-indent-p t)
+ ;; '(js2-bounce-indent-p t)
  '(js2-indent-switch-body t)
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-strict-missing-semi-warning nil)
  '(js2-strict-trailing-comma-warning nil)
  '(package-selected-packages
    (quote
-    (php-mode terraform-mode graphviz-dot-mode coffee-mode ido-vertical-mode ido-yes-or-no flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults ac-inf-ruby ac-geiser)))
+    (rjsx-mode tide company typescript-mode php-mode terraform-mode graphviz-dot-mode coffee-mode ido-vertical-mode ido-yes-or-no flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults)))
  '(rspec-spec-command "bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
