@@ -5,7 +5,7 @@
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
 
-(require 'cask "/usr/local/Cellar/cask/0.8.4/cask.el")
+(require 'cask "/usr/local/Cellar/cask/0.8.5/cask.el")
 (cask-initialize)
 (pallet-mode t)
 
@@ -412,7 +412,6 @@
  ;; If there is more than one, they won't work right.
  '(js-switch-indent-offset 2)
  '(js2-basic-offset 2)
- ;; '(js2-bounce-indent-p t)
  '(js2-indent-switch-body t)
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-strict-missing-semi-warning nil)
