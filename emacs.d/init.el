@@ -280,7 +280,7 @@
 (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
-
+(setq-default typescript-indent-level 2)
 ;; enable typescript-tslint checker
 (with-eval-after-load 'flycheck
   (flycheck-add-mode 'typescript-tslint 'web-mode)
