@@ -1,15 +1,59 @@
+;; https://github.com/radian-software/straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name
+        "straight/repos/straight.el/bootstrap.el"
+        (or (bound-and-true-p straight-base-dir)
+            user-emacs-directory)))
+      (bootstrap-version 7))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-;; (package-initialize)
+(straight-use-package 'use-package)
+;; Configure use-package to use straight.el by default
+(use-package straight
+  :custom
+  (straight-use-package-by-default t))
 
-(require 'cask "/usr/local/Cellar/cask/0.8.5/cask.el")
-(cask-initialize)
-(pallet-mode t)
+(use-package better-defaults)
+(use-package zenburn-theme
+  :config
+  (load-theme 'zenburn t))
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :config
+  (exec-path-from-shell-initialize))
+(use-package flx-ido)
+(use-package ido-completing-read+)
+(use-package ido-vertical-mode)
+(use-package ido-yes-or-no)
+(use-package projectile)
+(use-package projectile-rails)
+(use-package golden-ratio
+  :config
+  (golden-ratio-mode 1))
+(use-package edit-server)
+(use-package company)
+(use-package flycheck)
+(use-package flycheck-color-mode-line)
+(use-package rainbow-delimiters)
+(use-package smex)
+(use-package lsp-mode)
+(use-package lsp-ui)
+(use-package company-lsp)
+(use-package go-mode
+  :hook
+  (before-save . gofmt-before-save)
+  (go-mode . lsp))
+(use-package yasnippet)
 
-(require 'better-defaults)
+
 
 ;; programming modes settings
 ;; rainbow delimiters
@@ -17,7 +61,7 @@
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
-(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
+;; (mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
 
 (add-to-list 'default-frame-alist '(font . "Ricty Diminished-16"))
 
@@ -26,8 +70,8 @@
 (setq ns-pop-up-frames nil)
 
 
-(setq ns-command-modifier (quote meta))
-(setq ns-alternate-modifier (quote super))
+(setq ns-command-modifier 'meta)
+(setq ns-alternate-modifier 'super)
 (setq mac-allow-anti-aliasing t)
 (setq yank-excluded-properties t)
 
@@ -41,25 +85,19 @@
       (add-to-list 'default-frame-alist '(alpha . 80))
       (setq initial-frame-alist '((width . 165)(height . 45)(top . 50)(left . 50)))
       ;; (load-theme 'solarized-dark t)
-      (load-theme 'zenburn t)
+      ;; (load-theme 'zenburn t)
       (set-face-attribute 'region nil :background "#666" :foreground "#ffffff")
       ;; (load-theme 'wombat t)
-      (cond
-       ;; carbon emacs
-       ((featurep 'carbon-emacs-package)
-        (setq mac-option-modifier 'meta)
-        (setq yank-excluded-properties t)
-        (require 'display-buffer-for-wide-screen)
-        )
-       ;; cocoa emacs
-       ((eq window-system 'ns)
-        (setq mac-command-modifier 'meta)
-        (setq mac-allow-anti-aliasing t)
-        (setq yank-excluded-properties t)
-        (setq exec-path-from-shell-check-startup-files nil)
-        (exec-path-from-shell-initialize)
-        ;; (load "emacs23mac_font.el")
-        ))
+      ;; (cond
+      ;;  ;; cocoa emacs
+      ;;  ((eq window-system 'ns)
+      ;;   (setq mac-command-modifier 'meta)
+      ;;   (setq mac-allow-anti-aliasing t)
+      ;;   (setq yank-excluded-properties t)
+      ;;   (setq exec-path-from-shell-check-startup-files nil)
+      ;;   (exec-path-from-shell-initialize)
+      ;;   ;; (load "emacs23mac_font.el")
+      ;;   ))
       ))
 ;;tabs, indent
 (setq standard-indent 2)
@@ -107,10 +145,10 @@
      (define-key org-mode-map (kbd "C-'") nil)
      ))
 
-;; C-h でカーソルの左にある文字を消す
-(define-key global-map "\C-h" 'delete-backward-char)
-;; C-h に割り当てられている関数 help-command を C-x C-h に割り当てる
-(define-key global-map "\C-x\C-h" 'help-command)
+;; ;; C-h でカーソルの左にある文字を消す
+;; (define-key global-map "\C-h" 'delete-backward-char)
+;; ;; C-h に割り当てられている関数 help-command を C-x C-h に割り当てる
+;; (define-key global-map "\C-x\C-h" 'help-command)
 
 ;; リージョンを色付きにする
 (setq-default transient-mark-mode 1)
@@ -138,16 +176,14 @@
 
 (setq dabbrev-case-fold-search nil) ; 大文字小文字を区別
 ;; 現在行強調表示
-;; (setq hl-line-face 'hl-line)
-;; (global-hl-line-mode t)
+(setq hl-line-face 'hl-line)
+(global-hl-line-mode t)
 ;; 行番号
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 
 (setq scroll-step 1)
 (setq read-file-name-completion-ignore-case nil)
 
-;; https://github.com/roman/golden-ratio.el
-(golden-ratio-mode 1)
 ;;http://d.hatena.ne.jp/rubikitch/20100210/emacs
 (defun other-window-or-split ()
   (interactive)
@@ -186,9 +222,9 @@
 
 ;; yasnippet
 ;; (add-to-list 'load-path "~/Dropbox/dotfiles/elisp/yasnippet/")
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas-global-mode 1)
-(global-set-key (kbd "C-M-;") 'yas/insert-snippet)
+;; (require 'yasnippet) ;; not yasnippet-bundle
+;; (yas-global-mode 1)
+;; (global-set-key (kbd "C-M-;") 'yas/insert-snippet)
 ;;(setq yas/trigger-key (kbd "SPC"))
 ;;(setq yas/next-field-key (kbd "TAB"))
 ;; (require 'dropdown-list)
@@ -277,7 +313,7 @@
 (setq company-tooltip-align-annotations t)
 
 ;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
+;; (add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (setq-default typescript-indent-level 2)
@@ -405,29 +441,29 @@
 ;; 自動改行の調整
 (setq truncate-partial-width-windows nil)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(js-switch-indent-offset 2)
- '(js2-basic-offset 2)
- '(js2-indent-switch-body t)
- '(js2-mode-indent-ignore-first-tab t)
- '(js2-strict-missing-semi-warning nil)
- '(js2-strict-trailing-comma-warning nil)
- '(package-selected-packages
-   (quote
-    (rjsx-mode tide company typescript-mode php-mode terraform-mode graphviz-dot-mode coffee-mode ido-vertical-mode ido-yes-or-no flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults)))
- '(rspec-spec-command "bin/rspec")
- '(rspec-use-bundler-when-possible nil)
- '(rspec-use-rake-when-possible nil)
- '(rspec-use-spring-when-possible nil)
- '(web-mode-attr-indent-offset 2))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(js-switch-indent-offset 2)
+;;  '(js2-basic-offset 2)
+;;  '(js2-indent-switch-body t)
+;;  '(js2-mode-indent-ignore-first-tab t)
+;;  '(js2-strict-missing-semi-warning nil)
+;;  '(js2-strict-trailing-comma-warning nil)
+;;  '(package-selected-packages
+;;    (quote
+;;     (rjsx-mode tide company typescript-mode php-mode terraform-mode graphviz-dot-mode coffee-mode ido-vertical-mode ido-yes-or-no flx-ido projectile-rails zenburn-theme yasnippet yard-mode yaml-mode web-mode use-package solarized-theme smex smartparens slim-mode scss-mode rspec-mode rainbow-delimiters projectile prodigy popwin pallet nyan-mode nginx-mode multiple-cursors markdown-toc magit js2-mode idle-highlight-mode htmlize golden-ratio go-mode flycheck-color-mode-line flycheck-cask feature-mode expand-region exec-path-from-shell elixir-mode edit-server drag-stuff csv-mode better-defaults)))
+;;  '(rspec-spec-command "bin/rspec")
+;;  '(rspec-use-bundler-when-possible nil)
+;;  '(rspec-use-rake-when-possible nil)
+;;  '(rspec-use-spring-when-possible nil)
+;;  '(web-mode-attr-indent-offset 2))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )
+;; (add-hook 'after-init-hook 'inf-ruby-switch-setup)
