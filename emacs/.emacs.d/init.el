@@ -63,7 +63,7 @@
 (setq default-input-method "MacOSX")
 ;; (mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
 
-(add-to-list 'default-frame-alist '(font . "Ricty Diminished-16"))
+(add-to-list 'default-frame-alist '(font . "HackGen-16"))
 
 ;; starting to mess with 23
 (setq line-move-visual 'nil)
