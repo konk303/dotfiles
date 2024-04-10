@@ -55,6 +55,8 @@
   :bind (:map org-mode-map ("C-'" . nil)))
 (use-package yard-mode
   :hook (ruby-mode . yard-mode))
+(use-package web-mode
+  :mode "\\.erb\\'")
 
 
 
@@ -282,8 +284,6 @@
 
 ;; modes
 
-;; html
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 
 ;; js/jsx
 ;; https://github.com/ananthakumaran/tide/
@@ -323,20 +323,12 @@
 (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . rjsx-mode))
 (add-hook 'rjsx-mode-hook #'setup-tide-mode)
 
-(setq-default web-mode-comment-formats
-              '(("java"       . "/*")
-                ("javascript" . "//")
-                ("jsx" . "//")
-                ("php"        . "/*")))
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
               '(javascript-jshint))
 
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
-
-;; erb
-(add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
 
 ;; feature
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
