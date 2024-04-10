@@ -53,6 +53,8 @@
 (use-package magit)
 (use-package org
   :bind (:map org-mode-map ("C-'" . nil)))
+(use-package yard-mode
+  :hook (ruby-mode . yard-mode))
 
 
 
@@ -365,20 +367,6 @@
 ;;javascript-mode to json
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
 (setq js-indent-level 2)
-
-;;ruby-mode
-;; magickコメントを入れない
-(setq ruby-encoding-magic-comment-style nil)
-;; `C-c C-s` to r c instead of pry
-(eval-after-load 'inf-ruby
-  '(define-key inf-ruby-minor-mode-map
-     (kbd "C-c C-s") 'inf-ruby-console-auto))
-(add-hook 'ruby-mode-hook
-          '(lambda ()
-             (yard-mode)
-             ;; (robe-mode)
-             ))
-;; (add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
