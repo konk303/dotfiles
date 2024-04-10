@@ -18,51 +18,45 @@
 (straight-use-package 'use-package)
 ;; Configure use-package to use straight.el by default
 (use-package straight
-  :custom
-  (straight-use-package-by-default t))
-
+  :custom (straight-use-package-by-default t))
 (use-package better-defaults)
 (use-package zenburn-theme
-  :config
-  (load-theme 'zenburn t))
+  :config (load-theme 'zenburn t))
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
-  :config
-  (exec-path-from-shell-initialize))
+  :config (exec-path-from-shell-initialize))
 (use-package flx-ido)
 (use-package ido-completing-read+)
 (use-package ido-vertical-mode)
 (use-package ido-yes-or-no)
-(use-package projectile)
-(use-package projectile-rails)
+(use-package projectile
+  :init (projectile-global-mode))
+(use-package projectile-rails
+  :init (projectile-rails-global-mode))
 (use-package golden-ratio
-  :config
-  (golden-ratio-mode 1))
-;; http://www.emacswiki.org/emacs/Edit_with_Emacs
+  :config (golden-ratio-mode 1))
 (use-package edit-server
-  :init
-  (setq edit-server-new-frame nil)
-  (edit-server-start))
+  :init (edit-server-start)
+  :custom (edit-server-new-frame nil))
 (use-package company)
 (use-package flycheck)
 (use-package flycheck-color-mode-line)
-(use-package rainbow-delimiters)
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
 (use-package smex)
 (use-package lsp-mode)
 (use-package lsp-ui)
 (use-package company-lsp)
 (use-package go-mode
-  :hook
-  (before-save . gofmt-before-save)
-  (go-mode . lsp))
+  :hook (before-save . gofmt-before-save) (go-mode . lsp))
 (use-package yasnippet)
 (use-package magit)
+(use-package org
+  :bind (:map org-mode-map ("C-'" . nil)))
 
 
 
 ;; programming modes settings
-;; rainbow delimiters
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
@@ -134,21 +128,11 @@
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
 
-;; projectile
-(projectile-global-mode)
-(projectile-rails-global-mode)
-
 ;; php :p
 ;;(require 'php-mode)
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
-
-;; org-mode (disable key bindings)
-(eval-after-load "org"
-  '(progn
-     (define-key org-mode-map (kbd "C-'") nil)
-     ))
 
 ;; ;; C-h でカーソルの左にある文字を消す
 ;; (define-key global-map "\C-h" 'delete-backward-char)
