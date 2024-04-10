@@ -38,7 +38,11 @@
 (use-package golden-ratio
   :config
   (golden-ratio-mode 1))
-(use-package edit-server)
+;; http://www.emacswiki.org/emacs/Edit_with_Emacs
+(use-package edit-server
+  :init
+  (setq edit-server-new-frame nil)
+  (edit-server-start))
 (use-package company)
 (use-package flycheck)
 (use-package flycheck-color-mode-line)
@@ -405,12 +409,6 @@
 ;; geiser, for scheme(racket).
 (setq geiser-racket-binary "/usr/local/bin/racket")
 (setq geiser-active-implementations '(racket))
-
-;; chrome edit with emacs
-;; http://www.emacswiki.org/emacs/Edit_with_Emacs
-(require 'edit-server)
-(setq edit-server-new-frame nil)
-(edit-server-start)
 
 ;====================================
 ;;全角スペースとかに色を付ける
