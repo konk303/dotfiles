@@ -52,6 +52,7 @@
   (before-save . gofmt-before-save)
   (go-mode . lsp))
 (use-package yasnippet)
+(use-package magit)
 
 
 
