@@ -63,6 +63,7 @@
 (use-package slim-mode)
 (use-package web-mode
   :mode "\\.erb\\'")
+(use-package yaml-mode)
 (use-package yard-mode
   :hook (ruby-mode . yard-mode))
 
@@ -348,13 +349,6 @@
   ;; (flymake-mode-on)
 )
 (add-hook 'scss-mode-hook 'my-scss-mode-hook)
-
-;;yaml-mode
-(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
-
-;;action script mode
-(require 'actionscript-mode nil 't)
-(add-to-list 'auto-mode-alist '("\\.as$" . actionscript-mode))
 
 ;;csv-mode
 (require 'csv-mode nil 't)
