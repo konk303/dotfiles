@@ -46,16 +46,13 @@
 (use-package smex)
 (use-package yasnippet)
 (use-package magit)
-;; lsp
-(use-package lsp-mode
-  :commands lsp)
-(use-package lsp-ui
-  :commands lsp-ui-mode)
-(use-package company-lsp)
+;; eglot
+(use-package eglot
+ :hook ((go-mode ruby-mode) . eglot-ensure))
 ;; major modes
 (use-package elixir-mode)
 (use-package go-mode
-  :hook (before-save . gofmt-before-save) (go-mode . lsp))
+  :hook (before-save . gofmt-before-save))
 (use-package haskell-mode)
 (use-package org
   :bind (:map org-mode-map ("C-'" . nil))
@@ -65,7 +62,7 @@
   :mode "\\.erb\\'")
 (use-package yaml-mode)
 (use-package yard-mode
-  :hook (ruby-mode . yard-mode))
+  :hook ruby-mode)
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
