@@ -57,6 +57,7 @@
 (use-package org
   :bind (:map org-mode-map ("C-'" . nil))
   :straight (:type built-in))
+(use-package ruby-mode)
 (use-package slim-mode)
 (use-package web-mode
   :mode "\\.erb\\'")
