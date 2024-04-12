@@ -44,23 +44,27 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 (use-package smex)
-(use-package lsp-mode)
-(use-package lsp-ui)
-(use-package company-lsp)
-(use-package go-mode
-  :hook (before-save . gofmt-before-save) (go-mode . lsp))
 (use-package yasnippet)
 (use-package magit)
+;; lsp
+(use-package lsp-mode
+  :commands lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+(use-package company-lsp)
+;; major modes
+(use-package elixir-mode)
+(use-package go-mode
+  :hook (before-save . gofmt-before-save) (go-mode . lsp))
+(use-package haskell-mode)
 (use-package org
-  :bind (:map org-mode-map ("C-'" . nil)))
-(use-package yard-mode
-  :hook (ruby-mode . yard-mode))
+  :bind (:map org-mode-map ("C-'" . nil))
+  :straight (:type built-in))
+(use-package slim-mode)
 (use-package web-mode
   :mode "\\.erb\\'")
-
-
-
-;; programming modes settings
+(use-package yard-mode
+  :hook (ruby-mode . yard-mode))
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
@@ -362,17 +366,6 @@
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;;haml-mode
-(require 'haml-mode nil 't)
-(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
-;;sass-mode
-(require 'sass-mode nil 't)
-(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
-
-;; geiser, for scheme(racket).
-(setq geiser-racket-binary "/usr/local/bin/racket")
-(setq geiser-active-implementations '(racket))
 
 ;====================================
 ;;全角スペースとかに色を付ける
