@@ -19,39 +19,77 @@
 ;; Configure use-package to use straight.el by default
 (use-package straight
   :custom (straight-use-package-by-default t))
-(use-package better-defaults
-  :config (scroll-bar-mode t))
-(use-package zenburn-theme
-  :config (load-theme 'zenburn t)
-  (set-face-attribute 'region nil :background "#666" :foreground "#ffffff"))
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
   :config (exec-path-from-shell-initialize)
-  (add-to-list 'default-frame-alist '(alpha . 80))
+  ;; (add-to-list 'default-frame-alist '(alpha . 80))
   :custom (initial-frame-alist '((width . 165)(height . 45)(top . 50)(left . 50))))
-(use-package flx-ido)
-(use-package ido-completing-read+)
-(use-package ido-vertical-mode)
-(use-package ido-yes-or-no)
+(use-package zenburn-theme
+  :config (load-theme 'zenburn t)
+  (set-face-attribute 'region nil :background "#666" :foreground "#ffffff"))
+(use-package better-defaults
+  :config (scroll-bar-mode t)(ido-mode 0))
+(use-package edit-server
+  :init (edit-server-start)
+  :custom (edit-server-new-frame nil))
+;; corfu
+(use-package corfu
+  :straight (:includes corfu-history-mode)
+  :init (global-corfu-mode)
+  :custom ((corfu-auto t)
+           (corfu-cycle t)
+           (corfu-quit-no-match t)))
+(use-package cape
+  :init (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-history)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-tex)
+  (add-to-list 'completion-at-point-functions #'cape-sgml)
+  (add-to-list 'completion-at-point-functions #'cape-rfc1345)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
+  (add-to-list 'completion-at-point-functions #'cape-dict)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
+  (add-to-list 'completion-at-point-functions #'cape-line)
+  (add-to-list 'completion-at-point-functions #'tempel-complete))
+(use-package tempel
+    :bind (("M-+" . tempel-complete)
+           ("M-*" . tempel-insert)))
+(use-package tempel-collection)
+;; vertico/consult
+(use-package consult)
+(use-package vertico
+  :straight (:includes vertico-directory)
+  :init (vertico-mode)
+  :custom ((vertico-count 20)
+           (vertico-cycle t)
+           (read-extended-command-predicate #'command-completion-default-include-p))
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-word)))
+(use-package orderless
+  :custom (completion-styles '(orderless basic)))
+(use-package marginalia
+  :init (marginalia-mode))
+(use-package recentf
+  :init (recentf-mode 1))
+;; projectile
 (use-package projectile
   :init (projectile-global-mode))
 (use-package projectile-rails
   :init (projectile-rails-global-mode))
-(use-package golden-ratio
-  :config (golden-ratio-mode 1))
-(use-package edit-server
-  :init (edit-server-start)
-  :custom (edit-server-new-frame nil))
-(use-package company)
-(use-package flycheck)
-(use-package flycheck-color-mode-line)
-(use-package smex)
-(use-package yasnippet)
-(use-package magit)
 ;; eglot
 (use-package eglot
  :hook ((go-mode ruby-mode) . eglot-ensure))
+;; flycheck
+(use-package flycheck)
+(use-package flycheck-color-mode-line)
+;; git
+(use-package magit)
 ;; minor modes
+(use-package golden-ratio
+  :config (golden-ratio-mode 1))
 (use-package highlight-indent-guides
   :hook ((text-mode prog-mode) . highlight-indent-guides-mode)
   :custom ((highlight-indent-guides-method 'character)
@@ -110,21 +148,6 @@
 ;;tabs, indent
 (setq standard-indent 2)
 (setq-default tab-width 2)
-
-;; ido
-(ido-mode 1)
-(ido-everywhere 1)
-(ido-ubiquitous-mode 1)
-(flx-ido-mode 1)
-(ido-yes-or-no-mode 1)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
-;; disable ido faces to see flx highlights.
-;; (setq ido-use-faces nil)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -204,39 +227,6 @@
 ;; bindings
 ;;(global-set-key (kbd "C-c C-c") 'comment-dwim)
 (global-set-key (kbd "M-c") 'kill-ring-save)
-
-;; yasnippet
-;; (add-to-list 'load-path "~/Dropbox/dotfiles/elisp/yasnippet/")
-;; (require 'yasnippet) ;; not yasnippet-bundle
-;; (yas-global-mode 1)
-;; (global-set-key (kbd "C-M-;") 'yas/insert-snippet)
-;;(setq yas/trigger-key (kbd "SPC"))
-;;(setq yas/next-field-key (kbd "TAB"))
-;; (require 'dropdown-list)
-;; (setq yas/prompt-functions '(yas/dropdown-prompt))
-;; (require 'anything-c-yasnippet)
-;; (setq anything-c-yas-space-match-any-greedy t) ;スペース区切りで絞り込めるようにする デフォルトは nil
-;; (global-set-key (kbd "M-SPC") 'anything-c-yas-complete) ;C-c yで起動 (同時にお使いのマイナーモードとキーバインドがかぶるかもしれません)
-;; (yas/initialize)
-;; (yas/load-directory "~/Dropbox/dotfiles/elisp/yasnippet/snippets")
-
-;; company
-(add-hook 'after-init-hook 'global-company-mode)
-(with-eval-after-load 'company
-  (setq company-auto-expand t) ;; 1個目を自動的に補完
-  (setq company-transformers '(company-sort-by-backend-importance)) ;; ソート順
-  (setq company-idle-delay 0) ; 遅延なしにすぐ表示
-  (setq company-minimum-prefix-length 2) ; デフォルトは4
-  (setq company-selection-wrap-around t) ; 候補の最後の次は先頭に戻る
-  (setq completion-ignore-case t)
-  (setq company-dabbrev-downcase nil)
-  (global-set-key (kbd "C-M-i") 'company-complete)
-  ;; C-n, C-pで補完候補を次/前の候補を選択
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous)
-  (define-key company-active-map [tab] 'company-complete-selection) ;; TABで候補を設定
-  (define-key company-active-map (kbd "C-g") 'company-abort)
-  )
 
 ;; modes
 
