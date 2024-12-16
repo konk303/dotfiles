@@ -22,7 +22,7 @@
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
   :config (exec-path-from-shell-initialize)
-  ;; (add-to-list 'default-frame-alist '(alpha . 80))
+  (add-to-list 'default-frame-alist '(alpha . 80))
   :custom (initial-frame-alist '((width . 165)(height . 45)(top . 50)(left . 50))))
 (use-package zenburn-theme
   :config (load-theme 'zenburn t)
