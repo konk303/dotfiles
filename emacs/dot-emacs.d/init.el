@@ -77,11 +77,6 @@
   :init (marginalia-mode))
 (use-package recentf
   :init (recentf-mode 1))
-;; projectile
-(use-package projectile
-  :init (projectile-global-mode))
-(use-package projectile-rails
-  :init (projectile-rails-global-mode))
 ;; eglot
 (use-package eglot
   :hook (prog-mode . eglot-ensure))
