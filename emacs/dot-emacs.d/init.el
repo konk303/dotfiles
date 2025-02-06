@@ -21,7 +21,8 @@
   :custom (straight-use-package-by-default t))
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
-  :config (exec-path-from-shell-initialize)
+  :config (setq exec-path-from-shell-check-startup-files nil)
+  (exec-path-from-shell-initialize)
   (add-to-list 'default-frame-alist '(alpha . 80))
   :custom (initial-frame-alist '((width . 165)(height . 45)(top . 50)(left . 50))))
 (use-package zenburn-theme
@@ -51,12 +52,15 @@
   (add-to-list 'completion-at-point-functions #'cape-abbrev)
   (add-to-list 'completion-at-point-functions #'cape-dict)
   (add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
-  (add-to-list 'completion-at-point-functions #'cape-line)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  ;; (add-to-list 'completion-at-point-functions #'cape-line)
   (add-to-list 'completion-at-point-functions #'tempel-complete))
 (use-package tempel
     :bind (("M-+" . tempel-complete)
            ("M-*" . tempel-insert)))
 (use-package tempel-collection)
+(use-package orderless
+  :custom (completion-styles '(orderless basic)))
 ;; vertico/consult
 (use-package consult)
 (use-package vertico
@@ -68,8 +72,7 @@
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-word)))
-(use-package orderless
-  :custom (completion-styles '(orderless basic)))
+
 (use-package marginalia
   :init (marginalia-mode))
 (use-package recentf
@@ -81,7 +84,7 @@
   :init (projectile-rails-global-mode))
 ;; eglot
 (use-package eglot
- :hook ((go-mode ruby-mode) . eglot-ensure))
+  :hook (prog-mode . eglot-ensure))
 ;; flycheck
 (use-package flycheck)
 (use-package flycheck-color-mode-line)
@@ -124,6 +127,17 @@
 (use-package yaml-mode)
 (use-package yard-mode
   :hook ruby-mode)
+;; js/jsx
+(use-package javascript-mode)
+(use-package typescript-mode)
+(use-package kotlin-mode)
+;; tree-sitter
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install t)
+  (global-treesit-auto-mode))
+
+
 
 ;; messing with ime
 (setq default-input-method "MacOSX")
@@ -228,53 +242,6 @@
 ;;(global-set-key (kbd "C-c C-c") 'comment-dwim)
 (global-set-key (kbd "M-c") 'kill-ring-save)
 
-;; modes
-
-;; js/jsx
-;; https://github.com/ananthakumaran/tide/
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  ;; configure javascript-tide checker to run after your default javascript checker
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  ;; configure jsx-tide checker to run after your default jsx checker
-  (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (company-mode +1))
-
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-;; (add-hook 'before-save-hook 'tide-format-before-save)
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-(setq-default typescript-indent-level 2)
-;; enable typescript-tslint checker
-(with-eval-after-load 'flycheck
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
-  (flycheck-add-mode 'javascript-eslint 'web-mode))
-
-;; tsx
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              (setup-tide-mode))))
-;; js/jsx
-(add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . rjsx-mode))
-(add-hook 'rjsx-mode-hook #'setup-tide-mode)
-
-;; disable jshint since we prefer eslint checking
-(setq-default flycheck-disabled-checkers
-              '(javascript-jshint))
-
-;; customize flycheck temp file prefix
-(setq-default flycheck-temp-prefix ".flycheck")
-
 ;; feature
 (add-to-list 'auto-mode-alist '("\\.feature$" . feature-mode))
 
@@ -293,10 +260,6 @@
 ;;csv-mode
 (require 'csv-mode nil 't)
 (add-to-list 'auto-mode-alist '("\\.csv$" . csv-mode))
-
-;;javascript-mode to json
-(add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
-(setq js-indent-level 2)
 
 ;; remove whitespace at the last of the line on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
