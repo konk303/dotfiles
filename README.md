@@ -25,3 +25,4 @@ dotfiles for rails developer using zsh/emacs
   ```
   % git clone https://github.com/amatsuda/gem-src.git "$(rbenv root)/plugins/gem-src"
   ```
+- [sync your vs code](https://qiita.com/Nuits/items/6204a6b0576b7a4e37ea)
