@@ -5,7 +5,7 @@ dotfiles for rails developer using zsh/emacs
   ```
   % /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   ```
-- clone this repo
+- clone this repo and
 - brew bundle
   ```
   % cd brew
@@ -19,7 +19,7 @@ dotfiles for rails developer using zsh/emacs
     ```
 - stow
   ```
-  % stow -t ~ -v --dotfiles brew emacs gh git karabiner readline ruby zsh
+  % stow -t ~ -v --dotfiles brew emacs gh git karabiner raycast readline ruby zsh
   ```
 - install gem-src
   ```
