@@ -72,7 +72,6 @@
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
               ("DEL" . vertico-directory-delete-word)))
-
 (use-package marginalia
   :init (marginalia-mode))
 (use-package recentf
@@ -107,6 +106,9 @@
 (use-package whitespace
   :config (global-whitespace-mode t)
   :custom (whitespace-style '(tab-mark)))
+(use-package ag)
+(use-package which-key
+  :config (which-key-mode))
 ;; major modes
 (use-package elixir-mode)
 (use-package go-mode
@@ -122,7 +124,6 @@
 (use-package yaml-mode)
 (use-package yard-mode
   :hook ruby-mode)
-;; js/jsx
 (use-package javascript-mode)
 (use-package typescript-mode)
 (use-package kotlin-mode)
