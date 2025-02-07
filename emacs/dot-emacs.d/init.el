@@ -61,6 +61,9 @@
 (use-package tempel-collection)
 (use-package orderless
   :custom (completion-styles '(orderless basic)))
+(use-package nerd-icons-corfu
+  :after corfu
+  :config (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 ;; vertico/consult
 (use-package consult)
 (use-package vertico
@@ -84,6 +87,11 @@
 (use-package flycheck-color-mode-line)
 ;; git
 (use-package magit)
+;; copilot
+(use-package copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-mode-map
+              ("TAB" . copilot-accept-completion)))
 ;; minor modes
 (use-package golden-ratio
   :config (golden-ratio-mode 1))
