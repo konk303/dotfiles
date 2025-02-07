@@ -39,7 +39,10 @@
   :init (global-corfu-mode)
   :custom ((corfu-auto t)
            (corfu-cycle t)
-           (corfu-quit-no-match t)))
+           (corfu-quit-no-match t))
+  :bind (:map corfu-map
+              ("TAB" . nil)
+              ("\t" . nil)))
 (use-package cape
   :init (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
@@ -56,8 +59,8 @@
   ;; (add-to-list 'completion-at-point-functions #'cape-line)
   (add-to-list 'completion-at-point-functions #'tempel-complete))
 (use-package tempel
-    :bind (("M-+" . tempel-complete)
-           ("M-*" . tempel-insert)))
+  :bind (("M-+" . tempel-complete)
+         ("M-*" . tempel-insert)))
 (use-package tempel-collection)
 (use-package orderless
   :custom (completion-styles '(orderless basic)))
@@ -190,7 +193,7 @@
 (display-time-mode -1)
 ;; 列数表示
 (column-number-mode 1)
-; startup message disable
+;; startup message disable
 (setq inhibit-startup-message t)
 ;; BS で選択範囲を消す
 (delete-selection-mode 1)
@@ -258,7 +261,7 @@
   (setq-default scss-compile-at-save nil)
   ;; (setq-default scss-output-directory "/dev/shm")
   ;; (flymake-mode-on)
-)
+  )
 (add-hook 'scss-mode-hook 'my-scss-mode-hook)
 
 ;;csv-mode
