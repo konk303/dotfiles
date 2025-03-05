@@ -121,6 +121,8 @@
 (use-package which-key
   :config (which-key-mode))
 ;; major modes
+(use-package markdown-mode
+  :mode ("\\.md\\'" . gfm-mode))
 (use-package elixir-mode)
 (use-package go-mode
   :hook (before-save . gofmt-before-save))
