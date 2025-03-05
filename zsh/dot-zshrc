@@ -6,6 +6,10 @@ export CLICOLOR=1
 # rbenv
 eval "$(rbenv init - zsh)"
 
+# nodenv
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
 # zmv
 autoload -Uz zmv
 # use extended glob (#, ~, ^), without aborting
@@ -105,4 +109,4 @@ alias e='emacsclient'
 alias ee='open /Applications/Emacs.app'
 alias cdd='cd $(ghq root)/$(ghq list | peco)'
 alias doc='docker-compose'
-alias dev='cd ~/src/dev'
+alias dev='cd ~/src/github.com/creal'
