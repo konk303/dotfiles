@@ -10,6 +10,12 @@ eval "$(rbenv init - zsh)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kimihiko.nakamura/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
 # zmv
 autoload -Uz zmv
 # use extended glob (#, ~, ^), without aborting
@@ -110,3 +116,85 @@ alias ee='open /Applications/Emacs.app'
 alias cdd='cd $(ghq root)/$(ghq list | peco)'
 alias doc='docker-compose'
 alias dev='cd ~/src/github.com/creal'
+
+# stolen from https://github.com/otaaaa/dotfiles/blob/master/zshrc
+function keygen() {
+  local length=12
+  echo "$(openssl rand -base64 $length)"
+}
+
+function uuid() {
+  uuidgen | tr \[:upper:\] \[:lower:\]
+}
+
+function ipv4() {
+  ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+}
+
+function gip() {
+  curl -s http://checkip.amazonaws.com
+}
+function cleanup {
+  rm -f tmp/pids/server.pid && \
+  docker container prune -f && \
+  docker volume rm $(docker volume ls -q -f name=redis-data | fzf)
+}
+
+# Node.js
+alias ns="npm ls -g --depth=0"
+
+# Google Cloud Platform
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+
+# Kubernetes
+source <(kubectl completion zsh)
+complete -F __start_kubectl kc
+
+function kctx {
+  kubectl config unset current-context > /dev/null 2>&1
+  export REGION_NAME=asia-northeast1
+  export CLUSTER_NAME=$(gcloud container clusters list --format 'value(name)' --limit 1 2>/dev/null)
+  if [ ! -z $CLUSTER_NAME ]; then
+    gcloud container clusters get-credentials \
+      --region $REGION_NAME $CLUSTER_NAME > /dev/null 2>&1
+  fi
+}
+
+function gcfg {
+  echo -e "project: $(gcloud config get-value project)"
+  if [ ! -z $CLUSTER_NAME ]; then
+    echo -e "context: $(kubectl config current-context)"
+  else
+    echo -e "context: "
+  fi
+}
+
+function gauth {
+  export GOOGLE_APPLICATION_CREDENTIALS=$(find ~/.gcloud/*.json -type f | fzf)
+  export GOOGLE_PROJECT_ID=$(cat $GOOGLE_APPLICATION_CREDENTIALS | jq -r '.project_id')
+  gcloud auth activate-service-account \
+      --key-file=$GOOGLE_APPLICATION_CREDENTIALS \
+      --project=$GOOGLE_PROJECT_ID > /dev/null 2>&1
+  kctx
+  gcfg
+}
+
+function notify {
+  local account=$(gcloud config get core/account)
+  local ip=$(gip)
+  curl -X POST -H 'Content-type: application/json' --data "{
+    \"text\": \"${account}\n_${ip}_\"
+  }" $SLACK_URL > /dev/null 2>&1
+}
+
+function proxy {
+  INSTANCE_CONNECTION_NAME=`
+    gcloud sql instances list --format 'value(name)' \
+      | fzf \
+      | xargs gcloud sql instances describe --format 'value(connectionName)'
+  `
+  notify
+  ~/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:3306 \
+                    -credential_file=$GOOGLE_APPLICATION_CREDENTIALS
+}
