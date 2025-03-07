@@ -23,7 +23,7 @@
   :if (memq window-system '(mac ns))
   :config (setq exec-path-from-shell-check-startup-files nil)
   (exec-path-from-shell-initialize)
-  (add-to-list 'default-frame-alist '(alpha . 80))
+  (add-to-list 'default-frame-alist '(alpha . 95))
   :custom (initial-frame-alist '((width . 165)(height . 45)(top . 50)(left . 50))))
 (use-package zenburn-theme
   :config (load-theme 'zenburn t)
@@ -123,6 +123,7 @@
 ;; major modes
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode))
+(use-package terraform-mode)
 (use-package elixir-mode)
 (use-package go-mode
   :hook (before-save . gofmt-before-save))
