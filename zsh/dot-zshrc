@@ -114,7 +114,7 @@ alias g='git'
 alias e='emacsclient'
 alias ee='open /Applications/Emacs.app'
 alias cdd='cd $(ghq root)/$(ghq list | peco)'
-alias doc='docker-compose'
+alias doc='docker compose'
 alias dev='cd ~/src/github.com/creal'
 
 # stolen from https://github.com/otaaaa/dotfiles/blob/master/zshrc
@@ -171,7 +171,7 @@ function gcfg {
 }
 
 function gauth {
-  export GOOGLE_APPLICATION_CREDENTIALS=$(find ~/.gcloud/*.json -type f | fzf)
+  export GOOGLE_APPLICATION_CREDENTIALS=$(find ~/.config/gcloud/**/*.json -type f | fzf)
   export GOOGLE_PROJECT_ID=$(cat $GOOGLE_APPLICATION_CREDENTIALS | jq -r '.project_id')
   gcloud auth activate-service-account \
       --key-file=$GOOGLE_APPLICATION_CREDENTIALS \
