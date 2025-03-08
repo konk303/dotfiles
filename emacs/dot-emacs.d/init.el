@@ -138,6 +138,7 @@
 (use-package javascript-mode)
 (use-package typescript-mode)
 (use-package kotlin-mode)
+(use-package dockerfile-mode)
 ;; tree-sitter
 (use-package treesit-auto
   :config
