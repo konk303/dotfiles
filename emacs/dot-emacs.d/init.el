@@ -39,10 +39,10 @@
   :init (global-corfu-mode)
   :custom ((corfu-auto t)
            (corfu-cycle t)
-           (corfu-quit-no-match t))
-  :bind (:map corfu-map
-              ("TAB" . nil)
-              ("\t" . nil)))
+           (corfu-quit-no-match t)))
+  ;; :bind (:map corfu-map
+  ;;             ("TAB" . nil)
+  ;;             ("\t" . nil)))
 (use-package cape
   :init (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
@@ -94,7 +94,7 @@
 (use-package copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-mode-map
-              ("TAB" . copilot-accept-completion)))
+              ("C-<tab>" . copilot-accept-completion)))
 ;; minor modes
 (use-package golden-ratio
   :config (golden-ratio-mode 1))
