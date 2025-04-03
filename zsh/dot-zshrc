@@ -184,11 +184,11 @@ function gauth {
 }
 
 function notify {
-  local account=$(gcloud config get core/account)
-  local ip=$(gip)
-  curl -X POST -H 'Content-type: application/json' --data "{
-    \"text\": \"${account}\n_${ip}_\"
-  }" $SLACK_URL > /dev/null 2>&1
+  # local account=$(gcloud config get core/account)
+  # local ip=$(gip)
+  # curl -X POST -H 'Content-type: application/json' --data "{
+  #   \"text\": \"${account}\n_${ip}_\"
+  # }" $SLACK_URL > /dev/null 2>&1
 }
 
 function proxy {
@@ -198,6 +198,5 @@ function proxy {
       | xargs gcloud sql instances describe --format 'value(connectionName)'
   `
   notify
-  ~/cloud_sql_proxy -instances=$INSTANCE_CONNECTION_NAME=tcp:3306 \
-                    -credential_file=$GOOGLE_APPLICATION_CREDENTIALS
+  cloud-sql-proxy $INSTANCE_CONNECTION_NAME
 }
