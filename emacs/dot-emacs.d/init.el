@@ -82,6 +82,12 @@
   :init (marginalia-mode))
 (use-package recentf
   :init (recentf-mode 1))
+;; tramp
+(use-package tramp
+  :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (add-to-list 'tramp-remote-path "/home/vscode/.rbenv/shims")
+  )
 ;; eglot
 (use-package eglot
   :hook (prog-mode . eglot-ensure))
@@ -90,6 +96,10 @@
 (use-package flycheck-color-mode-line)
 ;; git
 (use-package magit)
+;; docker
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
 ;; copilot
 (use-package copilot
   :hook (prog-mode . copilot-mode)
