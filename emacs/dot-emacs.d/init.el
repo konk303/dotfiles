@@ -90,7 +90,10 @@
   )
 ;; eglot
 (use-package eglot
+  :init (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
   :hook (prog-mode . eglot-ensure))
+;; (use-package lsp-mode
+;;   :hook (prog-mode . lsp))
 ;; flycheck
 (use-package flycheck)
 (use-package flycheck-color-mode-line)
