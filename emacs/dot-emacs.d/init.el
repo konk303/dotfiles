@@ -191,22 +191,9 @@
 (setq standard-indent 2)
 (setq-default tab-width 2)
 
-;; flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
-(eval-after-load "flycheck"
-  '(progn
-     (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-     ))
 ;; M-n, M-p to `next/prev error`
 (global-set-key (kbd "M-n") 'next-error)
 (global-set-key (kbd "M-p") 'previous-error)
-
-;; ;; php :p
-;; (require 'php-mode)
-;; (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-;; (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-;; (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 ;; リージョンを色付きにする
 (setq-default transient-mark-mode 1)
