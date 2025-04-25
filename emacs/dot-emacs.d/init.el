@@ -98,7 +98,7 @@
   )
 ;; flycheck
 (use-package flycheck)
-(use-package flycheck-color-mode-line)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 ;; git
 (use-package magit)
 ;; docker
