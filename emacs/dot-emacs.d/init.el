@@ -82,18 +82,20 @@
   :init (marginalia-mode))
 (use-package recentf
   :init (recentf-mode 1))
+;; eglot
+;; (use-package eglot
+;;   :init (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) . "ruby-lsp"))
+;; (add-hook 'ruby-mode-hook 'eglot-ensure)
+;;   :hook (prog-mode . eglot-ensure))
+;; lsp-mode
+(use-package lsp-mode
+  :hook (prog-mode . lsp))
 ;; tramp
 (use-package tramp
   :config
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   (add-to-list 'tramp-remote-path "/home/vscode/.rbenv/shims")
   )
-;; eglot
-(use-package eglot
-  :init (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) "ruby-lsp"))
-  :hook (prog-mode . eglot-ensure))
-;; (use-package lsp-mode
-;;   :hook (prog-mode . lsp))
 ;; flycheck
 (use-package flycheck)
 (use-package flycheck-color-mode-line)
