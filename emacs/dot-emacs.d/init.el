@@ -23,7 +23,7 @@
   :if (memq window-system '(mac ns))
   :config (setq exec-path-from-shell-check-startup-files nil)
   (exec-path-from-shell-initialize)
-  (add-to-list 'default-frame-alist '(alpha . 95))
+  (add-to-list 'default-frame-alist '(alpha . 90))
   :custom (initial-frame-alist '((width . 165)(height . 45)(top . 50)(left . 50))))
 (use-package zenburn-theme
   :config (load-theme 'zenburn t)
@@ -90,6 +90,12 @@
 ;; lsp-mode
 (use-package lsp-mode
   :hook (prog-mode . lsp))
+;; tree-sitter
+(use-package treesit-auto
+  :config
+  (setq treesit-auto-install t)
+  (setq treesit-font-lock-level 4)
+  (global-treesit-auto-mode))
 ;; tramp
 (use-package tramp
   :config
@@ -159,11 +165,6 @@
 (use-package php-mode
   :mode "\\.php\\'")
 (use-package dockerfile-mode)
-;; tree-sitter
-(use-package treesit-auto
-  :config
-  (setq treesit-auto-install t)
-  (global-treesit-auto-mode))
 
 
 
