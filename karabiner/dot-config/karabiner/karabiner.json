@@ -9,6 +9,7 @@
                 "rules": [
                     {
                         "description": "Emacs Emulation in all apps without emacs keybindings (v1.2)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
