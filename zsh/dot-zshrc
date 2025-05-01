@@ -200,3 +200,6 @@ function proxy {
   notify
   cloud-sql-proxy $INSTANCE_CONNECTION_NAME
 }
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
