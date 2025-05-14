@@ -89,7 +89,9 @@
 ;;   :hook (prog-mode . eglot-ensure))
 ;; lsp-mode
 (use-package lsp-mode
-  :hook (prog-mode . lsp))
+  :hook (prog-mode . lsp)
+  :config
+  (add-to-list 'lsp-language-id-configuration '(".*\\.html\\.erb$" . "html")))
 ;; tree-sitter
 (use-package treesit-auto
   :config
