@@ -91,7 +91,7 @@
 (use-package lsp-mode
   :hook (prog-mode . lsp)
   :config
-  (add-to-list 'lsp-language-id-configuration '(".*\\.html\\.erb$" . "html")))
+  (add-to-list 'lsp-language-id-configuration '(".*\\.html\\.erb$" . "ruby")))
 ;; tree-sitter
 (use-package treesit-auto
   :config
