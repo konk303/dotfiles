@@ -1,6 +1,7 @@
 tap "hashicorp/tap"
 brew "awscli"
 brew "elixir"
+brew "ffmpeg"
 brew "gh"
 brew "ghq"
 brew "git"
