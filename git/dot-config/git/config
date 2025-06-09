@@ -1,6 +1,6 @@
 [user]
-	name = Kimihiko NAKAMURA
-	email = nakamura.808@gmail.com
+	name = Kimihiko Nakamura
+	email = kimihiko.nakamura@creal.jp
 [branch]
 	autosetuprebase = always
 [fetch]
@@ -10,6 +10,8 @@
 [push]
 	autoSetupRemote = true
 [alias]
+	s = switch
+  wk = worktree
 	st = status
 	co = checkout
 	su = submodule update --init
@@ -19,7 +21,6 @@
 	br = branch -vv
 	f = fetch
 	ci = commit -v
-	s = submodule
 	rbo = rebase origin/main
 	rbd = rebase origin/develop
 	dm = diff main...
