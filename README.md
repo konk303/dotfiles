@@ -19,7 +19,7 @@ dotfiles for rails developer using zsh/emacs
     ```
 - stow
   ```
-  % stow -t ~ -v --dotfiles brew emacs gh git karabiner raycast readline ruby zsh
+  % stow -t ~ -v --dotfiles brew claude emacs gh git karabiner raycast readline ruby zsh
   ```
 - install gem-src
   ```
