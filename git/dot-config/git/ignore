@@ -13,3 +13,8 @@ Thumbs.db
 coverage
 tags
 TAGS
+CLAUDE.md
+docs
+
+**/.claude/settings.local.json
+.playwright-mcp/
