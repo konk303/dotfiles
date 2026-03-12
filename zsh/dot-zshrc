@@ -106,9 +106,7 @@ PROMPT="%{${fg_bold[cyan]}%}%#%{${reset_color}%} "
 PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
 function gcloud_config() {
-  if [[ -n "$CLOUDSDK_ACTIVE_CONFIG_NAME" ]]; then
-    echo ${CLOUDSDK_ACTIVE_CONFIG_NAME}
-  fi
+  cat "$HOME/.config/gcloud/active_config" 2>/dev/null
 }
 RPROMPT='$(git_color)$(__git_ps1)%{${reset_color}%} %{${fg[yellow]}%}($(gcloud_config))%{${reset_color}%}[%{${fg_bold[cyan]}%}%~%{${reset_color}%}]%{${fg_bold[magenta]}%}%D %T%{${reset_color}%}'
 
@@ -118,7 +116,7 @@ function gg() {
     name=$(gcloud config configurations list --format="value(name)" | peco)
   fi
   if [[ -n "$name" ]]; then
-    export CLOUDSDK_ACTIVE_CONFIG_NAME="$name"
+    gcloud config configurations activate "$name"
     local project=$(gcloud config get-value project 2>/dev/null)
     local cluster=$([[ -n "$project" ]] && kubectl config get-clusters | grep "$project")
     if [[ -n "$cluster" ]]; then
