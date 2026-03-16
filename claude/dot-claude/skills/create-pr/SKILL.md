@@ -1,3 +1,7 @@
+---
+description: RuboCopフォーマット後にコミットしてGitHub PRを作成する
+---
+
 ## Description
 
 このコマンドは以下の作業を自動で実行します：

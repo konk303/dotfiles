@@ -1,3 +1,7 @@
+---
+description: Sync documentation from source-of-truth (package.json, .env.example)
+---
+
 # Update Documentation
 
 Sync documentation from source-of-truth:

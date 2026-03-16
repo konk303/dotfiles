@@ -1,3 +1,7 @@
+---
+description: 変更を適度な粒度でコミットしてgit pushする
+---
+
 ## Description
 
 このコマンドは以下の作業を自動で実行します：
