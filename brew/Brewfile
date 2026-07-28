@@ -52,3 +52,5 @@ brew "composer"
 brew "curl"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# LLVM's OpenMP runtime library
+brew "libomp"
