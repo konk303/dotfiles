@@ -42,8 +42,9 @@ DB_backlogにNotionテンプレートを使ってページを作成する:
   - タスク: `内部`
   - プロダクト: `CMG`
   - 担当者: `2979deea-560a-4fa8-920b-2267ce2c4cc3` （TanakaJunki / junki.tanaka@creal.jp。UUID文字列で指定）
-  - 開始日: 当日の日付（プロパティ名は `date:開始日→終了日:start`、ISO 8601形式 `YYYY-MM-DD`。`date:開始日→終了日:is_datetime` は `0`）
-  - 終了日: 開始日の1ヶ月後（プロパティ名は `date:開始日→終了日:end`、ISO 8601形式 `YYYY-MM-DD`）
+  - 予定開始日: 当日の日付（プロパティ名は `date:予定開始日→予定終了日:start`、ISO 8601形式 `YYYY-MM-DD`。`date:予定開始日→予定終了日:is_datetime` は `0`）
+  - 予定終了日: 予定開始日の1ヶ月後（プロパティ名は `date:予定開始日→予定終了日:end`、ISO 8601形式 `YYYY-MM-DD`）
+  - ※ DB_backlog の日付プロパティは `コード承認日` / `予定開始日→予定終了日` / `実績開始日→実績終了日` / `リリース承認日` の4つ。`開始日→終了日` という名前のプロパティは存在しないため、指定するとNotion APIが `validation_error` を返す
 - **contentは指定しない**（テンプレートが非同期で適用される）
 
 ### Step 6: テンプレート適用後にコンテンツを更新
