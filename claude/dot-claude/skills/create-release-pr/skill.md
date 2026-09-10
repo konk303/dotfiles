@@ -5,6 +5,8 @@ description: develop -> main のリリースPRを作成するスキル。「リ�
 
 # リリースPR作成（develop -> main）
 
+`{OWNER}/{REPO}` は対象のGitHubリポジトリに読み替える。
+
 ## 手順
 
 ### Step 1: origin の最新を取得し差分を確認
@@ -18,7 +20,7 @@ description: develop -> main のリリースPRを作成するスキル。「リ�
 - リバート→再リバートなど相殺されるものは最終的な状態で判断する
 
 ### Step 3: Notionリンクの収集
-- 各PRの本文を `gh pr view {PR番号} --repo creal/creal-manager --json body` で取得
+- 各PRの本文を `gh pr view {PR番号} --repo {OWNER}/{REPO} --json body` で取得
 - 本文中のNotionリンク（`https://www.notion.so/...`）を収集する
 - リリース承認資料のリンクがない場合はユーザーに確認する
 
@@ -41,5 +43,5 @@ description: develop -> main のリリースPRを作成するスキル。「リ�
 - 本文を提示してユーザーの承認を得る
 
 ### Step 6: PR作成
-- `gh pr create --repo creal/creal-manager --base main --head develop` で作成
+- `gh pr create --repo {OWNER}/{REPO} --base main --head develop` で作成
 - 作成後のPR URLをユーザーに報告する

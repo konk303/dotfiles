@@ -140,7 +140,7 @@ alias e='emacsclient'
 alias ee='open /Applications/Emacs.app'
 alias cdd='cd $(ghq root)/$(ghq list | peco)'
 alias doc='docker compose'
-alias dev='cd ~/src/github.com/creal'
+alias dev='cd ~/src/github.com'
 alias gc='gcloud'
 
 # stolen from https://github.com/otaaaa/dotfiles/blob/master/zshrc
