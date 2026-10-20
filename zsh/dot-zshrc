@@ -13,6 +13,9 @@ eval "$(rbenv init - zsh)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+# rustup (keg-only)
+export PATH="$HOME/.cargo/bin:$(brew --prefix)/opt/rustup/bin:$PATH"
+
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/kimihiko.nakamura/.docker/completions $fpath)
 autoload -Uz compinit
