@@ -1,3 +1,5 @@
+;;; init.el --- -*- lexical-binding: t; -*-
+
 ;; https://github.com/radian-software/straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -89,7 +91,8 @@
 ;;   :hook (prog-mode . eglot-ensure))
 ;; lsp-mode
 (use-package lsp-mode
-  :hook (prog-mode . lsp)
+  ;; skip non-file buffers (e.g. straight's temp buffers while building autoloads)
+  :hook (prog-mode . (lambda () (when buffer-file-name (lsp))))
   :config
   (add-to-list 'lsp-language-id-configuration '(".*\\.html\\.erb$" . "ruby")))
 ;; tree-sitter
@@ -100,6 +103,7 @@
   (global-treesit-auto-mode))
 ;; tramp
 (use-package tramp
+  :straight (:type built-in)
   :config
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   (add-to-list 'tramp-remote-path "/home/vscode/.rbenv/shims")
@@ -115,7 +119,7 @@
   :bind ("C-c d" . docker))
 ;; copilot
 (use-package copilot
-  :hook (prog-mode . copilot-mode)
+  :hook (prog-mode . (lambda () (when buffer-file-name (copilot-mode))))
   :bind (:map copilot-mode-map
               ("C-<tab>" . copilot-accept-completion)))
 ;; minor modes
