@@ -146,6 +146,9 @@ function gg() {
     local cluster=$([[ -n "$project" ]] && kubectl config get-clusters | grep "$project")
     if [[ -n "$cluster" ]]; then
       kubectl config use-context "$cluster"
+    else
+      # don't leave kubectl pointing at another project's cluster
+      kubectl config unset current-context > /dev/null
     fi
   fi
 }
@@ -202,22 +205,9 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.
 source <(kubectl completion zsh)
 complete -F __start_kubectl kc
 
-function notify {
-  # local account=$(gcloud config get core/account)
-  # local ip=$(gip)
-  # curl -X POST -H 'Content-type: application/json' --data "{
-  #   \"text\": \"${account}\n_${ip}_\"
-  # }" $SLACK_URL > /dev/null 2>&1
-}
-
 function proxy {
-  INSTANCE_CONNECTION_NAME=`
-    gcloud sql instances list --format 'value(name)' \
-      | fzf \
-      | xargs gcloud sql instances describe --format 'value(connectionName)'
-  `
-  notify
-  cloud-sql-proxy $INSTANCE_CONNECTION_NAME
+  local instance=$(gcloud sql instances list --format 'value(connectionName)' | fzf)
+  [[ -n "$instance" ]] && cloud-sql-proxy "$instance"
 }
 
 autoload -U +X bashcompinit && bashcompinit
