@@ -113,6 +113,26 @@ function gcloud_config() {
 }
 RPROMPT='$(git_color)$(__git_ps1)%{${reset_color}%} %{${fg[yellow]}%}($(gcloud_config))%{${reset_color}%}[%{${fg_bold[cyan]}%}%~%{${reset_color}%}]%{${fg_bold[magenta]}%}%D %T%{${reset_color}%}'
 
+# browser login only when gcloud or ADC credentials can't be refreshed
+function gg-reauth() {
+  local account=$(gcloud config get-value account 2>/dev/null)
+  if gcloud auth print-access-token > /dev/null 2>&1 &&
+     env -u GOOGLE_APPLICATION_CREDENTIALS gcloud auth application-default print-access-token > /dev/null 2>&1; then
+    return 0
+  fi
+  gcloud auth login "$account" --update-adc --force
+}
+
+# keep ADC quota project in sync with the active configuration
+function gg-quota() {
+  local project="$1"
+  local adc="${CLOUDSDK_CONFIG:-$HOME/.config/gcloud}/application_default_credentials.json"
+  [[ -z "$project" ]] && return 0
+  [[ "$(jq -r '.quota_project_id // empty' "$adc" 2>/dev/null)" == "$project" ]] && return 0
+  gcloud auth application-default set-quota-project "$project" > /dev/null 2>&1 ||
+    echo "gg: could not set ADC quota project to $project" >&2
+}
+
 function gg() {
   local name="$1"
   if [[ -z "$name" ]]; then
@@ -120,7 +140,9 @@ function gg() {
   fi
   if [[ -n "$name" ]]; then
     gcloud config configurations activate "$name"
+    gg-reauth || return 1
     local project=$(gcloud config get-value project 2>/dev/null)
+    gg-quota "$project"
     local cluster=$([[ -n "$project" ]] && kubectl config get-clusters | grep "$project")
     if [[ -n "$cluster" ]]; then
       kubectl config use-context "$cluster"
@@ -179,35 +201,6 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.
 # Kubernetes
 source <(kubectl completion zsh)
 complete -F __start_kubectl kc
-
-function kctx {
-  kubectl config unset current-context > /dev/null 2>&1
-  export REGION_NAME=asia-northeast1
-  export CLUSTER_NAME=$(gcloud container clusters list --format 'value(name)' --limit 1 2>/dev/null)
-  if [ ! -z $CLUSTER_NAME ]; then
-    gcloud container clusters get-credentials \
-      --region $REGION_NAME $CLUSTER_NAME > /dev/null 2>&1
-  fi
-}
-
-function gcfg {
-  echo -e "project: $(gcloud config get-value project)"
-  if [ ! -z $CLUSTER_NAME ]; then
-    echo -e "context: $(kubectl config current-context)"
-  else
-    echo -e "context: "
-  fi
-}
-
-function gauth {
-  export GOOGLE_APPLICATION_CREDENTIALS=$(find ~/.gcloud/**/*.json -type f | fzf)
-  export GOOGLE_PROJECT_ID=$(cat $GOOGLE_APPLICATION_CREDENTIALS | jq -r '.project_id')
-  gcloud auth activate-service-account \
-      --key-file=$GOOGLE_APPLICATION_CREDENTIALS \
-      --project=$GOOGLE_PROJECT_ID > /dev/null 2>&1
-  kctx
-  gcfg
-}
 
 function notify {
   # local account=$(gcloud config get core/account)
