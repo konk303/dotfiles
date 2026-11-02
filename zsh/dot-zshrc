@@ -133,29 +133,63 @@ function gg-quota() {
     echo "gg: could not set ADC quota project to $project" >&2
 }
 
+# list configuration names by kind; names containing "prod" are production. $1 = prod | nonprod
+function _gg_configs() {
+  local name
+  gcloud config configurations list --format="value(name)" |
+    while read -r name; do
+      if [[ "$name" == *prod* ]]; then
+        [[ "$1" == prod ]] && print -r -- "$name"
+      else
+        [[ "$1" == nonprod ]] && print -r -- "$name"
+      fi
+    done
+}
+
+function _gg_activate() {
+  gcloud config configurations activate "$1" || return 1
+  gg-reauth || return 1
+  local project=$(gcloud config get-value project 2>/dev/null)
+  gg-quota "$project"
+  local cluster=$([[ -n "$project" ]] && kubectl config get-clusters | grep "$project")
+  if [[ -n "$cluster" ]]; then
+    kubectl config use-context "$cluster"
+  else
+    # don't leave kubectl pointing at another project's cluster
+    kubectl config unset current-context > /dev/null
+  fi
+}
+
+# non-production only
 function gg() {
-  local name="$1"
-  if [[ -z "$name" ]]; then
-    name=$(gcloud config configurations list --format="value(name)" | peco)
+  local name="${1:-$(_gg_configs nonprod | peco)}"
+  [[ -z "$name" ]] && return 1
+  if ! (( ${${(f)"$(_gg_configs nonprod)"}[(Ie)$name]} )); then
+    echo "gg: '$name' is not a non-production configuration (use gg-prod)" >&2
+    return 1
   fi
-  if [[ -n "$name" ]]; then
-    gcloud config configurations activate "$name"
-    gg-reauth || return 1
-    local project=$(gcloud config get-value project 2>/dev/null)
-    gg-quota "$project"
-    local cluster=$([[ -n "$project" ]] && kubectl config get-clusters | grep "$project")
-    if [[ -n "$cluster" ]]; then
-      kubectl config use-context "$cluster"
-    else
-      # don't leave kubectl pointing at another project's cluster
-      kubectl config unset current-context > /dev/null
-    fi
+  _gg_activate "$name"
+}
+
+# production only. doesn't switch unless you type yes
+function gg-prod() {
+  local name="${1:-$(_gg_configs prod | peco)}"
+  [[ -z "$name" ]] && return 1
+  if ! (( ${${(f)"$(_gg_configs prod)"}[(Ie)$name]} )); then
+    echo "gg-prod: '$name' is not a production configuration (use gg)" >&2
+    return 1
   fi
+  print -P "%F{red}%B⚠  Switch to PRODUCTION ($name)?%b%f"
+  local reply
+  read -r "reply?Type yes to continue: "
+  [[ "$reply" == yes ]] || { echo "aborted"; return 1 }
+  _gg_activate "$name"
 }
-function gg-complete() {
-  _values "gcloud config" $(gcloud config configurations list --format="value(name)")
-}
-compdef gg-complete gg
+
+function _gg_complete() { _values "gcloud config" $(_gg_configs nonprod) }
+function _gg_prod_complete() { _values "gcloud config" $(_gg_configs prod) }
+compdef _gg_complete gg
+compdef _gg_prod_complete gg-prod
 
 # aliases
 alias ll='ls -lah'
@@ -204,11 +238,6 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.
 # Kubernetes
 source <(kubectl completion zsh)
 complete -F __start_kubectl kc
-
-function proxy {
-  local instance=$(gcloud sql instances list --format 'value(connectionName)' | fzf)
-  [[ -n "$instance" ]] && cloud-sql-proxy "$instance"
-}
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
