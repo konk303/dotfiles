@@ -29,3 +29,7 @@ devcontainer exec --workspace-folder . git status
 ```
 
 Reason: Git needs local configuration (user.name, user.email).
+
+## Private
+
+@~/.claude/CLAUDE.private.md
